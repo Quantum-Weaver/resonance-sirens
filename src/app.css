@@ -1,0 +1,64 @@
+/* ==========================================================================
+   SIRENS — the palette
+   One accent, a calm ground, and a dark mode that is the same design rather
+   than an inversion of it. Nothing here shouts; this is an app someone opens
+   on a hard day.
+   ========================================================================== */
+:root {
+  --ground: #fdf7f8;
+  --surface: #ffffff;
+  --raised: #f7edf0;
+  --ink: #2c2028;
+  --ink-soft: #6a5560;
+  --muted: #9a8590;
+  --line: #efe2e7;
+  --line-firm: #dcc6ce;
+  --accent: #a63d62;
+  --accent-w: #fbedf2;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ground: #161013;
+    --surface: #1e161b;
+    --raised: #281d24;
+    --ink: #f0e6ec;
+    --ink-soft: #c3aeb9;
+    --muted: #907c88;
+    --line: #2c2028;
+    --line-firm: #43323b;
+    --accent: #e78fae;
+    --accent-w: #2b1a22;
+  }
+}
+:root[data-theme='dark'] {
+  --ground: #161013;
+  --surface: #1e161b;
+  --raised: #281d24;
+  --ink: #f0e6ec;
+  --ink-soft: #c3aeb9;
+  --muted: #907c88;
+  --line: #2c2028;
+  --line-firm: #43323b;
+  --accent: #e78fae;
+  --accent-w: #2b1a22;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font: 16px/1.6 ui-sans-serif, 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light dark;
+}
+button { font: inherit; color: inherit; }
+
+/* The comfort guard — every motion in this app stops here if she asks. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
