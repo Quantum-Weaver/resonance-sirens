@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Resonance Sirens",
   "version": "0.1.0",
-  "identifier": "com.audhd.resonance_sirens",
+  "identifier": "com.audhd.resonance-sirens",
   "build": {
     "frontendDist": "../build",
     "devUrl": "http://localhost:1424",
