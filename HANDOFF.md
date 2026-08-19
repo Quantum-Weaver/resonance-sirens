@@ -11,11 +11,16 @@ LEGEND   state  ● done · ◐ drifted/partial · ⏸ his hold · — not yet
          proof  ✔ gates green · ✗ failing · ? unproven
 ```
 
-**resonance-sirens** · 2026-08-18 · last hand **Camber** 🕯️ · branch `main` ·
-0 ahead / 0 behind · working tree **50 modified** — 22 M · 4 D · 24 untracked.
+**resonance-sirens** · 2026-08-19 · last hand **Camber** 🕯️ · branch `main` ·
+**0 ahead / 0 behind · working tree clean** — the rebuild landed at KP's own hand in
+`a473f49` *syncing git*, 2026-08-18 22:04.
 
-*A sovereign cycle tracker, built for **TJ**, whose idea it is. Rebuilt whole tonight on
-the Resonance Echoes v1.3.2 body.*
+*A sovereign cycle tracker, built for **TJ**, whose idea it is. Rebuilt whole on the
+Resonance Echoes v1.3.2 body.*
+
+**KP's word, 2026-08-19:** *"sirens is at a good stopping point until my wife weighs in,
+and it may be ready to ship as a free app by the weekend."* **The build road pauses here**
+until she has seen it. A weekend ship is his possibility, not a plan; no date is owed.
 
 ---
 
@@ -39,17 +44,15 @@ the Resonance Echoes v1.3.2 body.*
 | **Signed v0.1.0 APK + AAB on the shelf** | ● | ✋ | ✔ `release/` written 08-18 21:28 — payload CRC-for-CRC identical to the 21:24 build (866 entries), v1 + v2 + v4 signatures, cert `CN=AudHDities Sanctuary` cut 08-17 21:26 |
 | Tested on a phone | — | ✋ | ? export uses a blob download; whether that yields a file inside an Android WebView is unproven on device |
 | Her patterns · the sovereignty room · a PIN | — | — | **held for TJ** |
-| Uncommitted | ◐ | ✋ | 50 paths ride the ⚛ sync word; nothing was committed by a lamp |
+| Landed | ● | ✋ | the rebuild's 50 paths went up at his own hand, `a473f49`, 08-18 22:04 — six repos in 21 seconds. Nothing was committed by a lamp |
 
 *Corrected beside, 2026-08-18 — three things this realm's own papers say that the ground
 no longer does. **Reported, never rewritten**: they are voiced records and belong to the
 hand that wrote them.* ① `RUN-LOG.md:7` and `docs/CHECKLIST.md` Phase 1 both give
 `+layout` as `ea4d6ee2…`; on disk it is `4cdfe75e…`. ② `RUN-LOG.md:7` says *"release/
 v0.1.0 artifacts cleared"* — true when written (those were the pre-rebuild body's, cut
-08-17 21:37, Phase 0); the shelf has since been refilled from tonight's body. ③ Phase 5's
-signing box is unticked and the RUN-LOG's last line reads *"signing is KP's hand"* —
-`release/` holds signed artifacts. *`sign-release.py` takes the keystore password by
-`getpass` and stores nothing; no lamp can run it.*
+08-17 21:37, Phase 0); the shelf has since been refilled from tonight's body. ③ Phase 5's signing box read
+unticked against a `release/` holding signed artifacts — **trued 08-19.**
 
 *And the drift `THE-HANDOFF-RACK.md` has carried since 08-17 — this sheet reading `git's
 first breath | — | ✋ | ? remote wired, nothing committed` — closes with this
@@ -64,11 +67,12 @@ register and all ten sweeps. These carry ground addresses instead, and no id was
 |---|---|---|
 | **TJ sees it.** Everything above is a first shape to show her, not a settled design — the circles, the ribbon, the moon, the colours, the wording | ⚛ / TJ | `docs/CHECKLIST.md` Phase 6 · `CLAUDE.md:22-24` |
 | **The name.** TJ's idea, TJ's name to confirm | ⚛ / TJ | `HANDS.md` — her seat stands open, unscribed |
-| The 50 paths in this tree, riding his sync word | ✋ | `git status --porcelain`, this tree |
 | On a phone, in her hand | ✋ | `docs/CHECKLIST.md` Phase 5 |
+| **A free ship, possibly this weekend** — his own framing, and it waits on her first | ⚛ / TJ | KP's word, 2026-08-19 |
 
-*An unwritten end state prints **unwritten — his to rule**, and this realm's is unwritten:
-go-live, the store, and what ships in v1 are all his and hers, not this sheet's to guess.*
+*An unwritten end state prints **unwritten — his to rule**. What ships in v1 is hers and
+his; the store road is `resonance-standards/docs/PLAY-TRACK.md` when it is wanted, and
+nothing on it has been walked.*
 
 ## Read before you touch this repo
 
@@ -101,3 +105,8 @@ disagree, **the ground is right** — regenerate it.*
 *Law: `resonance-standards/docs/THE-ROLL.md` · Tender: `.claude/agents/handoff-tender.md`*
 
 — the **handoff-tender** · Opus (Claude), truly `claude-opus-5[1m]`, 2026-08-18
+
+*Trued beside, 2026-08-19 — **Camber** 🕯️, session `c7af8788`, at KP's word* **"please
+update the handoff."** *The tree is clean and level at `a473f49`; the uncommitted row is a
+landed one; his stopping-point word heads the sheet. Nothing else the tender wrote was
+touched.*

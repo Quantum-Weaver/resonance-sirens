@@ -30,10 +30,6 @@ function check(what, ok, detail = '') {
 	if (!ok) failures++;
 }
 
-/** Words this app does not have. Read off the rendered page, not the source. */
-const BANNED =
-	/\b(streaks?|missed|missing|late|irregular|abnormal|overdue|due|expected|predicted?|forecast|estimated?|averages?|usual|typical|skipped|consecutive|in a row|on time|cycle length|days ago|yesterday)\b/i;
-
 export async function visit(page) {
 	// The layout sends every first run to /onboarding. Step past it — this is a
 	// measurement of the calendar, not of the walk.
@@ -42,17 +38,29 @@ export async function visit(page) {
 	await page.go(`${BASE}/`);
 	await page.sleep(600);
 
-	// ---- seed: press a few circles, so some days carry moments and most do not
-	const pressed = await page.ev(`(async () => {
-		const btns = Array.from(document.querySelectorAll('.press'));
-		if (btns.length < 3) return 0;
-		btns[0].click(); await new Promise(r => setTimeout(r, 120));
-		btns[0].click(); await new Promise(r => setTimeout(r, 120));
-		btns[4].click(); await new Promise(r => setTimeout(r, 120));
-		btns[9].click(); await new Promise(r => setTimeout(r, 120));
-		return btns.length;
+	// ---- seed: put a few circles down through the quick-add dialog
+	//      Home holds no circles of its own — it is the log. The ten live in the
+	//      dialog the + opens, and in Settings. (KP, 2026-08-18: "home should not
+	//      have anything until a card is added by pressing a button.")
+	const seeded = await page.ev(`(async () => {
+		const wait = (ms) => new Promise(r => setTimeout(r, ms));
+		let circles = 0;
+		for (const i of [0, 0, 4, 9]) {
+			document.querySelector('.fab')?.click();
+			await wait(220);
+			const c = Array.from(document.querySelectorAll('dialog .circle'));
+			circles = c.length;
+			if (!c[i]) break;
+			c[i].click();
+			await wait(120);
+			Array.from(document.querySelectorAll('dialog button'))
+				.find(b => b.textContent.trim() === 'keep it')?.click();
+			await wait(260);
+		}
+		return { circles, cards: document.querySelectorAll('.card').length };
 	})()`);
-	check('the ten circles are on the home surface', pressed === 10, `found ${pressed}`);
+	check('the ten circles are in the quick-add dialog', seeded.circles === 10, JSON.stringify(seeded));
+	check('a press makes a card on the log', seeded.cards > 0, JSON.stringify(seeded));
 
 	await page.go(`${BASE}/calendar`);
 	await page.sleep(700);
@@ -75,12 +83,19 @@ export async function visit(page) {
 	})()`);
 	check('exactly one skin for every ordinary day', skins.length === 1, JSON.stringify(skins, null, 1));
 
-	// ---- 3 · NOTHING PAST TODAY IS A DOOR
-	const lastDoor = await page.ev(`(() => {
-		const b = document.querySelectorAll('button.cell');
-		return b.length ? b[b.length - 1].className : null;
+	// ---- 3 · EVERY DAY IS A DOOR, AHEAD OR BEHIND
+	//      An earlier version of this check asserted the opposite — that nothing
+	//      past today could be opened. KP, 2026-08-18: "a calendar that cannot
+	//      look a year into the future is hardly a calendar" · "women plan
+	//      pregnancies with such things." The stop was removed; so is the check
+	//      that guarded it.
+	const doors = await page.ev(`(() => {
+		const cells = document.querySelectorAll('.cell');
+		const buttons = document.querySelectorAll('button.cell');
+		return { cells: cells.length, buttons: buttons.length };
 	})()`);
-	check('the last reachable day is today', String(lastDoor).includes('today'), String(lastDoor));
+	check('every day can be opened', doors.cells > 0 && doors.cells === doors.buttons,
+		JSON.stringify(doors));
 
 	// ---- 4 · THE PANEL OPENS IN FLOW, AND NOTHING TRAPS
 	await page.ev(`(() => {
@@ -109,11 +124,17 @@ export async function visit(page) {
 	await page.go(`${BASE}/`);
 	await page.sleep(500);
 	await page.ev(`(async () => {
-		const p = document.querySelector('.press');
-		p?.click(); await new Promise(r => setTimeout(r, 250));
-		const f = Array.from(document.querySelectorAll('button'))
-			.find(b => b.textContent.trim() === 'forget that');
-		f?.click(); await new Promise(r => setTimeout(r, 250));
+		const wait = (ms) => new Promise(r => setTimeout(r, ms));
+		// Open the newest card, then the two-step forget: 'forget' arms it,
+		// 'forget it' takes it. No dialog anywhere in this app.
+		document.querySelector('.card .head')?.click();
+		await wait(250);
+		Array.from(document.querySelectorAll('.card button'))
+			.find(b => b.textContent.trim() === 'forget')?.click();
+		await wait(150);
+		Array.from(document.querySelectorAll('.card button'))
+			.find(b => b.textContent.trim() === 'forget it')?.click();
+		await wait(280);
 	})()`);
 	await page.go(`${BASE}/calendar`);
 	await page.sleep(700);

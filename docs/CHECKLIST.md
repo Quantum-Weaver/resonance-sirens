@@ -92,7 +92,8 @@
 - [x] `tauri android init` **deliberately not re-run**, so the icons were never touched —
       their 2026-08-17 21:29 timestamps and the master art's SHA `A6E2AF4D…` both hold
 - [x] Unsigned APK + AAB at `src-tauri/gen/android/app/build/outputs/`
-- [ ] **Signing — KP's own hand:** `python resonance-ziggy/modules/shipwright/sign-release.py resonance-sirens`
+- [x] **Signed at KP's own hand, 2026-08-18 21:28** — `release/` holds the v0.1.0 APK + AAB,
+      payload identical to the 21:24 build, cert `CN=AudHDities Sanctuary`
 - [ ] **Tested on a phone:** ⬜ — export uses a blob download (Echoes' mechanism);
       whether that produces a file inside an Android WebView is unproven on device
 
