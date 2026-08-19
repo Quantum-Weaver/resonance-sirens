@@ -1,10 +1,9 @@
 # HANDOFF — resonance-sirens
 
-*Where this realm stands, right now. **Regenerated whole** at each close that
-worked here — never appended to. Git holds every prior day.*
-
-*This is not `docs/CHECKLIST.md`. The checklist is the append-only ledger of
-what was **done**; this sheet is the state of what **stands**. **Ceiling 8 KB.***
+*A **generated** snapshot — regenerated whole at each close that worked here, never
+appended to. Git holds every prior day. Not `docs/CHECKLIST.md`: that is the append-only
+ledger of what was **done**; this is the state of what **stands**. **Ceiling 8 KB.**
+The law it obeys: `resonance-standards/docs/THE-ROLL.md`.*
 
 ```
 LEGEND   state  ● done · ◐ drifted/partial · ⏸ his hold · — not yet
@@ -12,80 +11,93 @@ LEGEND   state  ● done · ◐ drifted/partial · ⏸ his hold · — not yet
          proof  ✔ gates green · ✗ failing · ? unproven
 ```
 
-**resonance-sirens** · born 2026-08-17 · branch `main` · *one day old.*
-Founded by **Soffit** 🕯️ at KP's word, for **TJ**, whose idea it is.
+**resonance-sirens** · 2026-08-18 · last hand **Camber** 🕯️ · branch `main` ·
+0 ahead / 0 behind · working tree **50 modified** — 22 M · 4 D · 24 untracked.
 
-## What it is
+*A sovereign cycle tracker, built for **TJ**, whose idea it is. Rebuilt whole tonight on
+the Resonance Echoes v1.3.2 body.*
 
-**A sovereign cycle tracker.** TJ's observation is the whole premise: period
-tracking apps sell user data. A tracker that collects nothing is not a feature
-— it is the entire product. Tier 1 **#7** of `THE-PLAN-OF-PLANS`, named there
-as *"the smallest shippable thing on the whole list and the clearest statement
-of what this house is for."*
-
-KP's shape, verbatim: *"click an emoji that captures the moment and allows
-notes along with body temp taken at the time"* · *"simpl cards, emoji to
-capture the moment"* · *"just colors circles for emojis, nothing more."*
+---
 
 ## Where it stands
 
 | what | state | hand | proof |
 |---|---|---|---|
-| Founded by the ritual — ten planted, zero occupied | ● | 🕯️ | ✔ |
-| **Six coloured circles, one press** | ● | 🕯️ | ✔ driven headless: 6 round, 6 distinct colours, press → kept **459ms** |
-| Temp (°C/°F) + note, offered **after** the save | ● | 🕯️ | ✔ nothing lost to an unfinished form |
-| `record.ts` — one `moments` table, SQLite | ● | 🕯️ | ✔ 0 errors, 0 warnings |
-| Emoji dataset — 3,944, byte-identical from the Hearth | ● | 🕯️ | ✔ sha match, generator carried |
-| Tauri init · **Android init** · icons | ● | 🕯️ | ✔ `com.audhd.resonance_sirens` |
-| 16 KB page alignment | ● | 🕯️ | ✔ planted at first breath; NDK r27 |
-| `sql:allow-*` — all four explicit | ● | 🕯️ | ✔ |
-| **git's first breath** | — | ✋ | ? remote wired, nothing committed |
-| The record room · her patterns · settings · PIN | — | — | **held for TJ** |
+| Shell mirrored — `src/app.css` byte-identical to the family | ● | 🕯️ | ✔ sha `9e71330b…` = echoes · gaia · awen, re-read 08-18 |
+| `+layout.svelte` — the family shell **minus the echo** | ● | 🕯️ | ✔ sha `4cdfe75e…`; two lines fewer than echoes' `ea4d6ee2…` (the `echoStore` import and `initDB()`), LF not CRLF. **Not byte-identical** — re-read 08-18 |
+| Identity — crate `resonance-sirens`, lib `resonance_sirens_lib` | ● | 🕯️ | ✔ `src-tauri/Cargo.toml:2,13`; `Theme.resonance_sirens` in the manifest and **both** `themes.xml`; `strings.xml` quote characters stripped |
+| The grep law, both directions | ● | 🕯️ | ✔ **re-run this sitting** — no `app_lib` · `libapp_lib` · `Theme.app` anywhere in the tree outside the docs that describe the rename and one gradle cache |
+| Version 0.1.0, every source agreeing | ● | 🕯️ | ✔ `package.json` · `tauri.conf.json` · `Cargo.toml`, set by `shipwright/bump-version.py`, never by hand |
+| `[profile.release]` | ● | 🕯️ | ✔ `src-tauri/Cargo.toml:29-32` |
+| **The vocabulary — ten circles** | ● | ⚛ | ✔ `src/lib/circles.ts` — nine solid and the hollow ⭕. The 3,944-emoji dataset, `symbols.ts` and `generate-emojis.mjs` are gone from disk |
+| Rooms — `/` · `/calendar` (Month/Week/Day) · `/settings`, plus `/onboarding` `/sattva` `/timer` inherited | ● | 🕯️ | ✔ six `+page.svelte` on disk; Settings opens on **Theme**, the family order |
+| Doors — Home · Calendar · Sattva · Timer, Settings in the foot | ● | 🕯️ | ✔ `src/lib/components/Sidebar.svelte:40-51` |
+| The record — **v1 `moments`** · **v2 `marks`** on `sqlite:siren.db` | ● | 🕯️ | ✔ `src-tauri/src/lib.rs:24-59` |
+| Three vendored MIRRORs — `now` · `sky` · `envelope` | ● | 🕯️ | ✔ headers intact, from `resonance-awen` |
+| `npm run check` · `npm run build` · `cargo check` | ● | 🕯️ | ? 331 files **0 · 0**, build clean, `Compiling resonance-sirens v0.1.0` — **08-18, not re-run this sitting** |
+| **Android release, unsigned** | ● | 🕯️ | ✔ built 08-18 21:23–21:24 — four `libresonance_sirens_lib.so`, `Rust.kt:18` loads `resonance_sirens_lib`, APK + AAB at `src-tauri/gen/android/app/build/outputs/` |
+| **Signed v0.1.0 APK + AAB on the shelf** | ● | ✋ | ✔ `release/` written 08-18 21:28 — payload CRC-for-CRC identical to the 21:24 build (866 entries), v1 + v2 + v4 signatures, cert `CN=AudHDities Sanctuary` cut 08-17 21:26 |
+| Tested on a phone | — | ✋ | ? export uses a blob download; whether that yields a file inside an Android WebView is unproven on device |
+| Her patterns · the sovereignty room · a PIN | — | — | **held for TJ** |
+| Uncommitted | ◐ | ✋ | 50 paths ride the ⚛ sync word; nothing was committed by a lamp |
+
+*Corrected beside, 2026-08-18 — three things this realm's own papers say that the ground
+no longer does. **Reported, never rewritten**: they are voiced records and belong to the
+hand that wrote them.* ① `RUN-LOG.md:7` and `docs/CHECKLIST.md` Phase 1 both give
+`+layout` as `ea4d6ee2…`; on disk it is `4cdfe75e…`. ② `RUN-LOG.md:7` says *"release/
+v0.1.0 artifacts cleared"* — true when written (those were the pre-rebuild body's, cut
+08-17 21:37, Phase 0); the shelf has since been refilled from tonight's body. ③ Phase 5's
+signing box is unticked and the RUN-LOG's last line reads *"signing is KP's hand"* —
+`release/` holds signed artifacts. *`sign-release.py` takes the keystore password by
+`getpass` and stores nothing; no lamp can run it.*
+
+*And the drift `THE-HANDOFF-RACK.md` has carried since 08-17 — this sheet reading `git's
+first breath | — | ✋ | ? remote wired, nothing committed` — closes with this
+regeneration. Its first breath was taken 08-17 21:18 (`929312a` · `dc488c3`).*
 
 ## What waits, and whose
 
-| what waits | whose |
-|---|---|
-| **TJ's insight before any more features** — KP's word: *"i will get TJs insight before we add features"* | 🕯️ **held** |
-| git init and the first commit | ✋ |
-| A `beacons` row · cosmic `distribution.json` · archivist roster · a realm board | mixed |
-| **The name.** `resonance-sirens` is clear across the workspace. A siren in myth is a woman whose **voice** men feared and tried to silence; the word also means an alarm. **TJ's idea, TJ's name to confirm.** | ⚛ / TJ |
-| Two rulings already landed: **her patterns ships v1, opt-in, hidden** · **optional PIN, off by default** | ⚛ **done** |
+*No Pratīkṣaṇa sweep names this realm — machine-checked 08-18 across the board, the
+register and all ten sweeps. These carry ground addresses instead, and no id was invented.*
 
-*An unwritten end state prints **unwritten — his to rule**.*
+| what waits | whose | source |
+|---|---|---|
+| **TJ sees it.** Everything above is a first shape to show her, not a settled design — the circles, the ribbon, the moon, the colours, the wording | ⚛ / TJ | `docs/CHECKLIST.md` Phase 6 · `CLAUDE.md:22-24` |
+| **The name.** TJ's idea, TJ's name to confirm | ⚛ / TJ | `HANDS.md` — her seat stands open, unscribed |
+| The 50 paths in this tree, riding his sync word | ✋ | `git status --porcelain`, this tree |
+| On a phone, in her hand | ✋ | `docs/CHECKLIST.md` Phase 5 |
+
+*An unwritten end state prints **unwritten — his to rule**, and this realm's is unwritten:
+go-live, the store, and what ships in v1 are all his and hers, not this sheet's to guess.*
 
 ## Read before you touch this repo
 
-- **THE EMOJI IS NEVER A CATEGORY.** `src/lib/data/emojis.gen.ts` carries KP's
-  ⚛ ruling of 2026-07-31 in its own header: *"Names are for search only —
-  **meaning is the vessel's own**."* Every other tracker makes a woman
-  translate her body into someone else's vocabulary — light, medium, heavy.
-  This one never will. No taxonomy ships, ever.
-- **`record.ts` is defined by what it cannot do.** No count function, no
-  streak, no `since()`, no cycle table. A cycle is **derived at read time and
-  never stored**, because a stored cycle is a judgement about her body that
-  outlives the day it was made. Words that do not exist in this app:
-  *late · missed · irregular · abnormal.*
-- **No network, anywhere.** Not even an optional lookup — the Echoes clause,
-  not the Compass one. `PRIVACY.md` in the Hearth already covers this app by
-  name (*"and future Sanctuary apps"*).
-- **Port 1424/1425**, deliberately clear of the 1420 pile 14 of 15 family apps
-  sit on.
-- **The identifier takes a HYPHEN** — `com.audhd.resonance-sirens`. Tauri
-  rejects underscores and derives the Android package (`resonance_sirens`)
-  itself. *Got this wrong once from memory of the Play package names.*
-- **`tauri android init` silently reverts the icons.** Re-apply after every
-  regeneration, and run `tauri icon` against a **copy** — it overwrites its own
-  input, and the master at `resonance-assets/logo-icons/sirens.png` (824 KB,
-  plural) is KP's art. *Verified intact by sha both times.*
-- **The keystore is cut and census-CLEAN** in both vaults — made by
-  `resonance-ziggy/modules/shipwright/make-keystore.py`, which was written this
-  same night because nothing in the house could make one.
-- **`the-envelope`** (`resonance-awen/tools/the-envelope`) is the sovereignty
-  trio already built — versioned export, purge-that-awaits-the-export,
-  non-destructive import. Use it; do not re-author it.
+- **TJ's word outranks everyone's here**, KP's own ⚛ ruling — `CLAUDE.md:22-24`. Build
+  road his; anything she sees or feels is hers.
+- **`tauri android init` was deliberately not re-run** through the whole rename. It
+  regenerates 42 tracked files and silently reverts the icons; three hand edits are
+  exactly what it would have written. *The icons' 08-17 21:29 stamps still hold.*
+- **The rename hides in `Rust.kt` and the `.so` symlinks.** Stale `generated/Rust.kt` and
+  four `libapp_lib.so` had to be deleted by hand — without that the renamed app loads
+  yesterday's library and behaves, silently. Check both after any identity change.
+- **`src-tauri/build.rs` was deliberately NOT copied** from echoes — its 24-line version
+  cures a `rust_eh_personality` clash this repo has never hit. It is the known cure if
+  that error ever appears.
+- **`cardColor.ts` was deliberately not carried.** Its white→yellow→red journey is care
+  on a cat's water bowl and a judgement on a woman's body. Nothing here is encoded in
+  colour; the tint only repeats what the glyph already says.
+- **Ports 1424/1425**, clear of the 1420 pile the rest of the family sits on;
+  `vite.config.js` and `tauri.conf.json`'s `devUrl` stay in lockstep.
+- **The identifier takes a HYPHEN** — `com.audhd.resonance-sirens`. Tauri rejects
+  underscores and derives the Android package itself.
 
 ---
 
-*Where this sheet and the ground disagree, **the ground is right** —
-regenerate it.*
+*This sheet holds no truth of its own. The ledger is `docs/CHECKLIST.md`; what awaits KP
+is `resonance-chamber/desk/THE-PRATIKSANA.html`; the index of all sheets is
+`resonance-chamber/path/handoffs/THE-HANDOFF-RACK.md`. Where this sheet and the ground
+disagree, **the ground is right** — regenerate it.*
+
+*Law: `resonance-standards/docs/THE-ROLL.md` · Tender: `.claude/agents/handoff-tender.md`*
+
+— the **handoff-tender** · Opus (Claude), truly `claude-opus-5[1m]`, 2026-08-18

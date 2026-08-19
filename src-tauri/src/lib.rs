@@ -2,8 +2,8 @@
 // SIRENS — the Rust side
 // ============================================================================
 //
-// One migration, one table. The database URL here must match src/lib/record.ts
-// exactly ("sqlite:siren.db"), because nothing checks that for us.
+// The database URL here must match src/lib/record.ts exactly
+// ("sqlite:siren.db"), because nothing checks that for us.
 //
 // THE JNI LAW, from resonance-standards/docs/ANDROID-BUILD-LAWS.md §2:
 // non-ASCII in a SQL DEFAULT value fails SILENTLY through the Rust JNI bridge
@@ -33,6 +33,24 @@ pub fn run() {
               );
               CREATE INDEX IF NOT EXISTS moments_at ON moments (at DESC);",
         kind: MigrationKind::Up,
+    },
+    Migration {
+        version: 2,
+        description: "marks - her own word for a circle, if she wants one",
+        // HER VOCABULARY, NOT A TAXONOMY. The app ships no words, suggests
+        // none, and never reads one: this table is written only by her hand
+        // and rendered only back to her. It stores nothing about her body -
+        // a circle with the word "heavy" beside it still means, to this
+        // program, exactly what a circle with no word means: nothing.
+        //
+        // It is deliberately keyed by the glyph rather than given an id.
+        // One word per circle, replaced in place, and clearing the word
+        // deletes the row rather than leaving an empty string behind.
+        sql: "CREATE TABLE IF NOT EXISTS marks (
+                glyph TEXT PRIMARY KEY NOT NULL,
+                word  TEXT NOT NULL
+              );",
+        kind: MigrationKind::Up,
     }];
 
     tauri::Builder::default()
@@ -52,5 +70,5 @@ pub fn run() {
             Ok(())
         })
         .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .expect("error while running Resonance Sirens");
 }

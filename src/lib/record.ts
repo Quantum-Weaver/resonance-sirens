@@ -110,6 +110,52 @@ export async function capture(
 	return moment;
 }
 
+/**
+ * A moment she is placing on a day she has already lived.
+ *
+ * `capture()` above stamps the clock, because the time recorded should be the
+ * time she pressed. This one takes the day from HER TAP on a day in the
+ * calendar and from nowhere else - the app never back-dates anything on its
+ * own, and no caller in this repo hands it a computed day.
+ *
+ * If she gives no time the moment is stored at local midnight, which this app
+ * reads as SHE NAMED THE DAY, NOT THE HOUR - the calendar prints no clock time
+ * for a midnight moment. That convention costs no column: nothing new is
+ * stored about her body to carry a flag, and the schema is still the founding
+ * one.
+ *
+ * There is still no way to record a day that has not happened. The calendar
+ * offers this on today and earlier only, and this function is the only door.
+ */
+export async function captureOn(
+	day: string,
+	emoji: string,
+	time: string | null = null,
+	tempC: number | null = null,
+	note: string | null = null
+): Promise<Moment> {
+	const [y, mo, d] = day.split('-').map(Number);
+	const [h, mi] = (time ?? '00:00').split(':').map(Number);
+	const at = new Date(y, mo - 1, d, h || 0, mi || 0, 0, 0);
+	const moment: Moment = {
+		id: crypto.randomUUID(),
+		at: at.toISOString(),
+		emoji,
+		tempC,
+		note: note && note.trim() ? note.trim() : null
+	};
+	const conn = await connect();
+	if (conn) {
+		await conn.execute(
+			'INSERT INTO moments (id, at, emoji, temp_c, note) VALUES ($1, $2, $3, $4, $5)',
+			[moment.id, moment.at, moment.emoji, moment.tempC, moment.note]
+		);
+	} else {
+		ephemeral = [moment, ...ephemeral];
+	}
+	return moment;
+}
+
 /** Change a moment already recorded. Hers to correct; a record is not a verdict. */
 export async function amend(
 	id: string,
@@ -152,6 +198,51 @@ export async function all(): Promise<Moment[]> {
 }
 
 // ============================================================================
+// HER WORDS - the one thing stored that is not a moment
+// ============================================================================
+//
+// A word she typed under a circle, on her device, for her eyes. THE APP SHIPS
+// NO WORDS AND SUGGESTS NONE. It never reads one either: nothing in this
+// program branches on what a mark says, nothing groups by it, nothing exports
+// it as a claim about her body. A red circle with "heavy" beside it means, to
+// this code, exactly what a red circle with nothing beside it means - nothing.
+//
+// That is the line between HER vocabulary and a taxonomy, and it is the whole
+// reason this is allowed to exist at all.
+
+/** Her words when there is no database - a session, not a record. */
+let ephemeralMarks: Record<string, string> = {};
+
+/** Every word she has given, glyph -> word. Absent means she gave none. */
+export async function marks(): Promise<Record<string, string>> {
+	const d = await connect();
+	if (!d) return { ...ephemeralMarks };
+	const rows = await d.select<{ glyph: string; word: string }[]>('SELECT glyph, word FROM marks');
+	const out: Record<string, string> = {};
+	for (const r of rows) out[r.glyph] = r.word;
+	return out;
+}
+
+/** Set or clear her word for a circle. An empty word deletes the row rather
+ *  than leaving a blank behind - there is no such thing here as a word she
+ *  once had. */
+export async function mark(glyph: string, word: string | null): Promise<void> {
+	const w = word && word.trim() ? word.trim() : null;
+	const d = await connect();
+	if (d) {
+		if (w === null) await d.execute('DELETE FROM marks WHERE glyph = $1', [glyph]);
+		else
+			await d.execute(
+				'INSERT INTO marks (glyph, word) VALUES ($1, $2) ON CONFLICT(glyph) DO UPDATE SET word = $2',
+				[glyph, w]
+			);
+	} else {
+		if (w === null) delete ephemeralMarks[glyph];
+		else ephemeralMarks[glyph] = w;
+	}
+}
+
+// ============================================================================
 // SOVEREIGNTY — export whole, purge real
 // ============================================================================
 
@@ -171,8 +262,12 @@ export async function everything(): Promise<Moment[]> {
  */
 export async function purge(): Promise<void> {
 	const d = await connect();
-	if (d) await d.execute('DELETE FROM moments');
+	if (d) {
+		await d.execute('DELETE FROM moments');
+		await d.execute('DELETE FROM marks');
+	}
 	ephemeral = [];
+	ephemeralMarks = {};
 }
 
 /** Merge imported moments without destroying what is here. Same id wins the

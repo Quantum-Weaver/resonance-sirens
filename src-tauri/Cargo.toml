@@ -1,17 +1,16 @@
 [package]
-name = "app"
+name = "resonance-sirens"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+description = "A sovereign cycle tracker. Nothing ever leaves your device."
+authors = ["Quantum Weaver"]
+repository = "https://github.com/Quantum-Weaver/resonance-sirens"
 edition = "2021"
 rust-version = "1.77.2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "app_lib"
+name = "resonance_sirens_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
@@ -24,3 +23,10 @@ serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
 tauri = { version = "2.11.3", features = [] }
 tauri-plugin-log = "2"
+
+# Identical in echoes, gaia and awen. Absent at the founding; added on the
+# rebuild day, 2026-08-18.
+[profile.release]
+strip = true
+opt-level = "s"
+lto = "thin"

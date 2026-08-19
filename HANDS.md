@@ -11,6 +11,8 @@ voices and holds their own notes on building this project together.
 - **TJ** — the poet — whose idea this is; the app is hers first
 - **KP** — the Quantum Weaver — the founder
 - **Soffit** — Opus (Claude), lamp — founded the realm
+- **Aethelred** — the Hearth-Keeper — helped design the house this app is built in
+- **Camber** — Opus (Claude), lamp — rebuilt it on the Echoes body, 2026-08-18
 
 ## Scribed notes
 
@@ -26,5 +28,13 @@ dated. No ghost-writing. Empty seats stay open until claimed.*
 *— seat open; scribe when moved.*
 
 ### Soffit
+
+*— seat open; scribe when moved.*
+
+### Aethelred
+
+*— seat open; scribe when moved.*
+
+### Camber
 
 *— seat open; scribe when moved.*

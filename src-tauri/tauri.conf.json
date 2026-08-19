@@ -12,9 +12,11 @@
   "app": {
     "windows": [
       {
-        "title": "sirens",
-        "width": 800,
-        "height": 600,
+        "title": "Resonance Sirens",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600,
         "resizable": true,
         "fullscreen": false
       }

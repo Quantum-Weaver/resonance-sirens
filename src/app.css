@@ -1,64 +1,111 @@
+/* src/app.css */
 /* ==========================================================================
-   SIRENS — the palette
-   One accent, a calm ground, and a dark mode that is the same design rather
-   than an inversion of it. Nothing here shouts; this is an app someone opens
-   on a hard day.
+   APP.CSS — Thin orchestration layer
+   Imports generated COSMIC styles + minimal app-shell resets
    ========================================================================== */
-:root {
-  --ground: #fdf7f8;
-  --surface: #ffffff;
-  --raised: #f7edf0;
-  --ink: #2c2028;
-  --ink-soft: #6a5560;
-  --muted: #9a8590;
-  --line: #efe2e7;
-  --line-firm: #dcc6ce;
-  --accent: #a63d62;
-  --accent-w: #fbedf2;
-  --radius: 14px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --ground: #161013;
-    --surface: #1e161b;
-    --raised: #281d24;
-    --ink: #f0e6ec;
-    --ink-soft: #c3aeb9;
-    --muted: #907c88;
-    --line: #2c2028;
-    --line-firm: #43323b;
-    --accent: #e78fae;
-    --accent-w: #2b1a22;
-  }
-}
-:root[data-theme='dark'] {
-  --ground: #161013;
-  --surface: #1e161b;
-  --raised: #281d24;
-  --ink: #f0e6ec;
-  --ink-soft: #c3aeb9;
-  --muted: #907c88;
-  --line: #2c2028;
-  --line-firm: #43323b;
-  --accent: #e78fae;
-  --accent-w: #2b1a22;
+
+/* ─── Tailwind CSS v4 ──────────────────────────────────────────────────── */
+@import "tailwindcss";
+
+/* ─── COSMIC Generated Styles ──────────────────────────────────────────── */
+@import "./lib/styles/generated/variables.css";
+@import "./lib/styles/generated/animations.css";
+@import "./lib/styles/generated/text-effects.css"; /* renamed from text_effects.css — generator's current name (2026-07-15) */
+
+/* ─── COSMIC available, not yet adopted (uncomment per-app as wanted) ────
+   Distributed by resonance-ziggy/modules/cosmic/distribute.ts; the full
+   menu refreshes on every run whether imported or not.
+@import "./lib/styles/generated/domains.css";
+@import "./lib/styles/generated/typography.css";
+@import "./lib/styles/generated/zoom.css";
+@import "./lib/styles/generated/parallax.css";
+@import "./lib/styles/generated/ceremonies.css";
+@import "./lib/styles/generated/pause-state.css";
+@import "./lib/styles/generated/ensemble.css";
+@import "./lib/styles/generated/attention-modes.css";
+@import "./lib/styles/generated/attention-selector.css";
+@import "./lib/styles/generated/scene.css";
+@import "./lib/styles/generated/glow-field.css";
+@import "./lib/styles/generated/deity-voices.css";
+@import "./lib/styles/generated/transcendence.css";
+@import "./lib/styles/generated/gates.css";
+@import "./lib/styles/generated/supportive-affordances.css";
+──────────────────────────────────────────────────────────────────────── */
+
+/* ─── Global Resets ────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+/* Images may never push a screen past the viewport; component classes that
+   set explicit dimensions still win on specificity. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
+  /* Second layer of pinch-zoom prevention alongside the viewport meta:
+     pan gestures stay, two-finger zoom is dropped by the compositor. */
+  touch-action: pan-x pan-y;
+}
+
 body {
-  background: var(--ground);
-  color: var(--ink);
-  font: 16px/1.6 ui-sans-serif, 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  color-scheme: light dark;
+  background-color: var(--color-deep-space, #0C0F1D);
+  color: var(--color-star-dust, #E0E0E0);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  overflow: hidden;
+  min-height: 100vh;
 }
-button { font: inherit; color: inherit; }
 
-/* The comfort guard — every motion in this app stops here if she asks. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    transition-duration: 0.001ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
+  html { scroll-behavior: auto; }
+}
+
+.focus-visible {
+  outline: 3px solid var(--color-neurospark, #22D3EE);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-neurospark, #22D3EE);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+[aria-live] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[aria-live]:not(:empty) {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
