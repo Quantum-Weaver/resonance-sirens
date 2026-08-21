@@ -32,8 +32,9 @@ learn is not to learn it.
 
 ## THE STORY
 
-*Per the Story Block Standard. The full story grows at
-[docs/STORY-BLOCK.md](docs/STORY-BLOCK.md), told by its own voices.*
+*This section required by the [Story Block Standard](https://github.com/Quantum-Weaver/resonance-standards).*
+
+📖 [Full Story Block](docs/STORY-BLOCK.md)
 
 ## THE HANDS
 
