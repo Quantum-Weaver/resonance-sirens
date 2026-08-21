@@ -1,0 +1,29 @@
+{
+  "tier": "object",
+  "object_name": "icons",
+  "object_path": "src-tauri/icons",
+  "self": "sirens/src-tauri/icons/obp.ai.json",
+  "parent": "sirens/src-tauri/dbp.ai.json",
+  "description": "17 files, 1 subfolders",
+  "folders": [
+    {
+      "blueprint": "sirens/src-tauri/icons/fbp.ai.json",
+      "folder_path": "src-tauri/icons",
+      "description": "17 files, 1 subfolders",
+      "file_count": 17,
+      "subdirectory_count": 1
+    },
+    {
+      "blueprint": "sirens/src-tauri/icons/ios/fbp.ai.json",
+      "folder_path": "src-tauri/icons/ios",
+      "description": "18 files, 0 subfolders",
+      "file_count": 18,
+      "subdirectory_count": 0
+    }
+  ],
+  "folder_count": 2,
+  "total_files": 35,
+  "integration_timestamp": "2026-08-21T15:19:56.744148 | in sovereign time",
+  "maintaining_agent": "ObjectAgent",
+  "note": "Links only. Every folder's details live at its own address."
+}

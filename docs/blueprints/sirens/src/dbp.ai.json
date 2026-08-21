@@ -1,0 +1,39 @@
+{
+  "tier": "domain",
+  "domain_name": "src",
+  "domain_path": "src",
+  "self": "sirens/src/dbp.ai.json",
+  "parent": "sirens/pbp.ai.json",
+  "description": "2 files, 2 subfolders",
+  "objects": [
+    {
+      "blueprint": "sirens/src/lib/obp.ai.json",
+      "object_path": "src/lib",
+      "description": "6 files, 11 subfolders",
+      "folder_count": 14,
+      "total_files": 71
+    },
+    {
+      "blueprint": "sirens/src/routes/obp.ai.json",
+      "object_path": "src/routes",
+      "description": "3 files, 5 subfolders",
+      "folder_count": 6,
+      "total_files": 8
+    }
+  ],
+  "object_count": 2,
+  "folders_reporting_directly": [
+    {
+      "blueprint": "sirens/src/fbp.ai.json",
+      "folder_path": "src",
+      "description": "2 files, 2 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 2
+    }
+  ],
+  "total_folders": 21,
+  "total_files": 81,
+  "integration_timestamp": "2026-08-21T15:19:56.747735 | in sovereign time",
+  "maintaining_agent": "DomainAgent",
+  "note": "Links only. Every object's details live at its own address."
+}

@@ -1,0 +1,113 @@
+{
+  "tier": "object",
+  "object_name": "lib",
+  "object_path": "src/lib",
+  "self": "sirens/src/lib/obp.ai.json",
+  "parent": "sirens/src/dbp.ai.json",
+  "description": "6 files, 11 subfolders",
+  "folders": [
+    {
+      "blueprint": "sirens/src/lib/fbp.ai.json",
+      "folder_path": "src/lib",
+      "description": "6 files, 11 subfolders",
+      "file_count": 6,
+      "subdirectory_count": 11
+    },
+    {
+      "blueprint": "sirens/src/lib/components/fbp.ai.json",
+      "folder_path": "src/lib/components",
+      "description": "10 files, 1 subfolders",
+      "file_count": 10,
+      "subdirectory_count": 1
+    },
+    {
+      "blueprint": "sirens/src/lib/components/icons/fbp.ai.json",
+      "folder_path": "src/lib/components/icons",
+      "description": "7 files, 0 subfolders",
+      "file_count": 7,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/cosmic/fbp.ai.json",
+      "folder_path": "src/lib/cosmic",
+      "description": "12 files, 0 subfolders",
+      "file_count": 12,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/cumdach/fbp.ai.json",
+      "folder_path": "src/lib/cumdach",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/envelope/fbp.ai.json",
+      "folder_path": "src/lib/envelope",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/epagoge/fbp.ai.json",
+      "folder_path": "src/lib/epagoge",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/now/fbp.ai.json",
+      "folder_path": "src/lib/now",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/sky/fbp.ai.json",
+      "folder_path": "src/lib/sky",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/stores/fbp.ai.json",
+      "folder_path": "src/lib/stores",
+      "description": "3 files, 0 subfolders",
+      "file_count": 3,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/styles/fbp.ai.json",
+      "folder_path": "src/lib/styles",
+      "description": "0 files, 1 subfolders",
+      "file_count": 0,
+      "subdirectory_count": 1
+    },
+    {
+      "blueprint": "sirens/src/lib/styles/generated/fbp.ai.json",
+      "folder_path": "src/lib/styles/generated",
+      "description": "21 files, 0 subfolders",
+      "file_count": 21,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/theme/fbp.ai.json",
+      "folder_path": "src/lib/theme",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/src/lib/types/fbp.ai.json",
+      "folder_path": "src/lib/types",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    }
+  ],
+  "folder_count": 14,
+  "total_files": 71,
+  "integration_timestamp": "2026-08-21T15:19:56.729139 | in sovereign time",
+  "maintaining_agent": "ObjectAgent",
+  "note": "Links only. Every folder's details live at its own address."
+}

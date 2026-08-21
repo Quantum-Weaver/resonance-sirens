@@ -1,0 +1,44 @@
+{
+  "tier": "folder",
+  "folder_name": "src",
+  "folder_path": "src-tauri/src",
+  "self": "sirens/src-tauri/src/fbp.ai.json",
+  "parent": "sirens/src-tauri/src/obp.ai.json",
+  "description": "2 files, 0 subfolders",
+  "files": [
+    {
+      "path": "src-tauri/src/lib.rs",
+      "description": "SIRENS"
+    },
+    {
+      "path": "src-tauri/src/main.rs",
+      "description": "Prevents additional console window on Windows in release, DO NOT REMOVE!!"
+    }
+  ],
+  "file_count": 2,
+  "subdirectories": [],
+  "code_analysis": {
+    "lib.rs": {
+      "language": "rust",
+      "lines": 75,
+      "pub_fns": [
+        "run"
+      ],
+      "structs": [],
+      "tauri_commands": 0,
+      "uses_unsafe": false
+    },
+    "main.rs": {
+      "language": "rust",
+      "lines": 7,
+      "pub_fns": [],
+      "structs": [],
+      "tauri_commands": 0,
+      "uses_unsafe": false
+    }
+  },
+  "folders_not_walked": [],
+  "scan_timestamp": "2026-08-21T15:19:56.725484 | in sovereign time",
+  "maintaining_agent": "FolderAgent",
+  "note": "The details live here. Upper tiers link to this address; they do not copy this body."
+}

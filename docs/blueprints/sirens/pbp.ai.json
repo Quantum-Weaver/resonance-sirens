@@ -1,0 +1,184 @@
+{
+  "tier": "project",
+  "project_name": "resonance-sirens",
+  "project_short_name": "sirens",
+  "project_repo": "resonance-sirens",
+  "project_path": "C:\\_superposition\\resonance-sirens",
+  "self": "sirens/pbp.ai.json",
+  "parent": null,
+  "description": "A sovereign cycle tracker",
+  "tier_ladder": "file -> folder (fbp) -> object (obp) -> domain (dbp) -> project (pbp)",
+  "layout": "One project folder; the repo's own tree mirrored under it; the tier is the filename (pbp/dbp/obp/fbp.ai.json). Every link in every blueprint is relative to the blueprints folder, never absolute.",
+  "law": "Each tier links to where the details live. Nothing above the folder tier duplicates a body.",
+  "domains": [
+    {
+      "blueprint": "sirens/src/dbp.ai.json",
+      "domain_path": "src",
+      "description": "2 files, 2 subfolders",
+      "object_count": 2,
+      "total_folders": 21,
+      "total_files": 81
+    },
+    {
+      "blueprint": "sirens/src-tauri/dbp.ai.json",
+      "domain_path": "src-tauri",
+      "description": "5 files, 5 subfolders",
+      "object_count": 5,
+      "total_folders": 46,
+      "total_files": 95
+    }
+  ],
+  "domain_count": 2,
+  "objects_reporting_directly": [],
+  "folders_reporting_directly": [
+    {
+      "blueprint": "sirens/fbp.ai.json",
+      "folder_path": ".",
+      "description": "A sovereign cycle tracker",
+      "file_count": 13,
+      "subdirectory_count": 7
+    },
+    {
+      "blueprint": "sirens/.cargo/fbp.ai.json",
+      "folder_path": ".cargo",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/.claude/fbp.ai.json",
+      "folder_path": ".claude",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/docs/fbp.ai.json",
+      "folder_path": "docs",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/scripts/fbp.ai.json",
+      "folder_path": "scripts",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/static/fbp.ai.json",
+      "folder_path": "static",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    }
+  ],
+  "analysis": [
+    {
+      "blueprint": "sirens/analysis_sovereignty.ai.json",
+      "description": "the sovereignty law \u2014 HELD"
+    },
+    {
+      "blueprint": "sirens/reconciliation.ai.json",
+      "description": "declared versus present \u2014 1 findings"
+    }
+  ],
+  "totals": {
+    "folders_blueprinted": 73,
+    "files_described": 196
+  },
+  "not_walked": {
+    "reason": "package-class trees, this repo's own gitignored trees at every depth, reparse points, and this tool's own output",
+    "package_dirs": [
+      ".cache",
+      ".dart_tool",
+      ".git",
+      ".godot",
+      ".gradle",
+      ".import",
+      ".mono",
+      ".mypy_cache",
+      ".next",
+      ".nuxt",
+      ".pytest_cache",
+      ".svelte-kit",
+      ".turbo",
+      ".venv",
+      "Pods",
+      "__pycache__",
+      "build",
+      "dist",
+      "env",
+      "mimirs-well",
+      "node_modules",
+      "out",
+      "target",
+      "venv"
+    ],
+    "gitignored_trees": {
+      "release": {
+        "address": "release",
+        "files_on_disk": 3,
+        "walked": false,
+        "reason": "gitignored by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      }
+    },
+    "gitignored_trees_at_depth": {
+      "src-tauri/target": {
+        "address": "src-tauri/target",
+        "files_on_disk": 32760,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/schemas": {
+        "address": "src-tauri/gen/schemas",
+        "files_on_disk": 6,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/android/.gradle": {
+        "address": "src-tauri/gen/android/.gradle",
+        "files_on_disk": 14,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/android/build": {
+        "address": "src-tauri/gen/android/build",
+        "files_on_disk": 1,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/android/buildSrc/.gradle": {
+        "address": "src-tauri/gen/android/buildSrc/.gradle",
+        "files_on_disk": 6,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/android/buildSrc/build": {
+        "address": "src-tauri/gen/android/buildSrc/build",
+        "files_on_disk": 114,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/android/app/build": {
+        "address": "src-tauri/gen/android/app/build",
+        "files_on_disk": 590,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      },
+      "src-tauri/gen/android/app/src/main/java/com/audhd/resonance_sirens/generated": {
+        "address": "src-tauri/gen/android/app/src/main/java/com/audhd/resonance_sirens/generated",
+        "files_on_disk": 10,
+        "walked": false,
+        "reason": "gitignored at depth by this repo's own .gitignore \u2014 named and counted, never described, never opened"
+      }
+    },
+    "gitignored_note": "Read from the repo's own .gitignore files \u2014 the top-level ones one by one, the deeper ones in a single batched `git check-ignore`. Named and counted, never described, never opened.",
+    "reparse_points_not_followed": [],
+    "reparse_note": "Junctions and symlinks are named, never entered. Following one would pull an external ground into this repo's count, or loop on a self-junction.",
+    "own_output": "C:\\_superposition\\resonance-sirens\\docs\\blueprints"
+  },
+  "generated": "2026-08-21T15:19:56.774568 | in sovereign time",
+  "maintaining_agent": "ProjectAgent"
+}

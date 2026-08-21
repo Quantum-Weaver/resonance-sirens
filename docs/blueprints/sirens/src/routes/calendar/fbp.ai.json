@@ -1,0 +1,32 @@
+{
+  "tier": "folder",
+  "folder_name": "calendar",
+  "folder_path": "src/routes/calendar",
+  "self": "sirens/src/routes/calendar/fbp.ai.json",
+  "parent": "sirens/src/routes/obp.ai.json",
+  "description": "1 files, 0 subfolders",
+  "files": [
+    {
+      "path": "src/routes/calendar/+page.svelte",
+      "description": "surface, 11,331 bytes"
+    }
+  ],
+  "file_count": 1,
+  "subdirectories": [],
+  "code_analysis": {
+    "+page.svelte": {
+      "language": "svelte",
+      "lines": 421,
+      "uses_runes": [
+        "$derived",
+        "$state"
+      ],
+      "fetch_calls": [],
+      "has_style_block": true
+    }
+  },
+  "folders_not_walked": [],
+  "scan_timestamp": "2026-08-21T15:19:56.621674 | in sovereign time",
+  "maintaining_agent": "FolderAgent",
+  "note": "The details live here. Upper tiers link to this address; they do not copy this body."
+}

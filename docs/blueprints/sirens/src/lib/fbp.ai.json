@@ -1,0 +1,173 @@
+{
+  "tier": "folder",
+  "folder_name": "lib",
+  "folder_path": "src/lib",
+  "self": "sirens/src/lib/fbp.ai.json",
+  "parent": "sirens/src/lib/obp.ai.json",
+  "description": "6 files, 11 subfolders",
+  "files": [
+    {
+      "path": "src/lib/circles.ts",
+      "description": "THE CIRCLES"
+    },
+    {
+      "path": "src/lib/days.ts",
+      "description": "THE DAYS"
+    },
+    {
+      "path": "src/lib/moments.svelte.ts",
+      "description": "THE LIVING RECORD"
+    },
+    {
+      "path": "src/lib/prefs.svelte.ts",
+      "description": "PREFERENCES"
+    },
+    {
+      "path": "src/lib/record.ts",
+      "description": "THE RECORD"
+    },
+    {
+      "path": "src/lib/temperature.ts",
+      "description": "TEMPERATURE"
+    }
+  ],
+  "file_count": 6,
+  "subdirectories": [
+    "src/lib/components",
+    "src/lib/cosmic",
+    "src/lib/cumdach",
+    "src/lib/envelope",
+    "src/lib/epagoge",
+    "src/lib/now",
+    "src/lib/sky",
+    "src/lib/stores",
+    "src/lib/styles",
+    "src/lib/theme",
+    "src/lib/types"
+  ],
+  "code_analysis": {
+    "circles.ts": {
+      "language": "typescript",
+      "lines": 96,
+      "exported_functions": [
+        "isCircle",
+        "tintOf"
+      ],
+      "exported_consts": [
+        "CIRCLES"
+      ],
+      "interfaces": [],
+      "types": [
+        "Circle"
+      ],
+      "imports_node": [],
+      "spawns_process": false,
+      "writes_files": false,
+      "env_names_read": []
+    },
+    "days.ts": {
+      "language": "typescript",
+      "lines": 164,
+      "exported_functions": [
+        "dayKey",
+        "todayKey",
+        "byDay",
+        "ribbon",
+        "clockOf"
+      ],
+      "exported_consts": [
+        "WEEK_STARTS_ON",
+        "HEADS"
+      ],
+      "interfaces": [
+        "Day",
+        "Week"
+      ],
+      "types": [
+        "DayKey"
+      ],
+      "imports_node": [],
+      "spawns_process": false,
+      "writes_files": false,
+      "env_names_read": []
+    },
+    "moments.svelte.ts": {
+      "language": "typescript",
+      "lines": 145,
+      "exported_functions": [],
+      "exported_consts": [
+        "record"
+      ],
+      "interfaces": [],
+      "types": [],
+      "imports_node": [],
+      "spawns_process": false,
+      "writes_files": false,
+      "env_names_read": []
+    },
+    "prefs.svelte.ts": {
+      "language": "typescript",
+      "lines": 51,
+      "exported_functions": [],
+      "exported_consts": [
+        "prefs"
+      ],
+      "interfaces": [],
+      "types": [],
+      "imports_node": [],
+      "spawns_process": false,
+      "writes_files": false,
+      "env_names_read": []
+    },
+    "record.ts": {
+      "language": "typescript",
+      "lines": 294,
+      "exported_functions": [
+        "inTauri",
+        "capture",
+        "captureOn",
+        "amend",
+        "forget",
+        "all",
+        "marks",
+        "mark",
+        "everything",
+        "purge",
+        "absorb"
+      ],
+      "exported_consts": [],
+      "interfaces": [
+        "Moment"
+      ],
+      "types": [],
+      "imports_node": [],
+      "spawns_process": false,
+      "writes_files": false,
+      "env_names_read": []
+    },
+    "temperature.ts": {
+      "language": "typescript",
+      "lines": 58,
+      "exported_functions": [
+        "toC",
+        "fromC",
+        "bothUnits",
+        "readUnit",
+        "writeUnit"
+      ],
+      "exported_consts": [],
+      "interfaces": [],
+      "types": [
+        "Unit"
+      ],
+      "imports_node": [],
+      "spawns_process": false,
+      "writes_files": false,
+      "env_names_read": []
+    }
+  },
+  "folders_not_walked": [],
+  "scan_timestamp": "2026-08-21T15:19:56.551170 | in sovereign time",
+  "maintaining_agent": "FolderAgent",
+  "note": "The details live here. Upper tiers link to this address; they do not copy this body."
+}

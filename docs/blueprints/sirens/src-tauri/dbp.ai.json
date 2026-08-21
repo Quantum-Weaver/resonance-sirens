@@ -1,0 +1,60 @@
+{
+  "tier": "domain",
+  "domain_name": "src-tauri",
+  "domain_path": "src-tauri",
+  "self": "sirens/src-tauri/dbp.ai.json",
+  "parent": "sirens/pbp.ai.json",
+  "description": "5 files, 5 subfolders",
+  "objects": [
+    {
+      "blueprint": "sirens/src-tauri/.cargo/obp.ai.json",
+      "object_path": "src-tauri/.cargo",
+      "description": "1 files, 0 subfolders",
+      "folder_count": 1,
+      "total_files": 1
+    },
+    {
+      "blueprint": "sirens/src-tauri/capabilities/obp.ai.json",
+      "object_path": "src-tauri/capabilities",
+      "description": "1 files, 0 subfolders",
+      "folder_count": 1,
+      "total_files": 1
+    },
+    {
+      "blueprint": "sirens/src-tauri/gen/obp.ai.json",
+      "object_path": "src-tauri/gen",
+      "description": "0 files, 1 subfolders",
+      "folder_count": 40,
+      "total_files": 51
+    },
+    {
+      "blueprint": "sirens/src-tauri/icons/obp.ai.json",
+      "object_path": "src-tauri/icons",
+      "description": "17 files, 1 subfolders",
+      "folder_count": 2,
+      "total_files": 35
+    },
+    {
+      "blueprint": "sirens/src-tauri/src/obp.ai.json",
+      "object_path": "src-tauri/src",
+      "description": "2 files, 0 subfolders",
+      "folder_count": 1,
+      "total_files": 2
+    }
+  ],
+  "object_count": 5,
+  "folders_reporting_directly": [
+    {
+      "blueprint": "sirens/src-tauri/fbp.ai.json",
+      "folder_path": "src-tauri",
+      "description": "5 files, 5 subfolders",
+      "file_count": 5,
+      "subdirectory_count": 5
+    }
+  ],
+  "total_folders": 46,
+  "total_files": 95,
+  "integration_timestamp": "2026-08-21T15:19:56.748663 | in sovereign time",
+  "maintaining_agent": "DomainAgent",
+  "note": "Links only. Every object's details live at its own address."
+}

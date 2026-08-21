@@ -1,0 +1,22 @@
+{
+  "tier": "object",
+  "object_name": "src",
+  "object_path": "src-tauri/src",
+  "self": "sirens/src-tauri/src/obp.ai.json",
+  "parent": "sirens/src-tauri/dbp.ai.json",
+  "description": "2 files, 0 subfolders",
+  "folders": [
+    {
+      "blueprint": "sirens/src-tauri/src/fbp.ai.json",
+      "folder_path": "src-tauri/src",
+      "description": "2 files, 0 subfolders",
+      "file_count": 2,
+      "subdirectory_count": 0
+    }
+  ],
+  "folder_count": 1,
+  "total_files": 2,
+  "integration_timestamp": "2026-08-21T15:19:56.746706 | in sovereign time",
+  "maintaining_agent": "ObjectAgent",
+  "note": "Links only. Every folder's details live at its own address."
+}
