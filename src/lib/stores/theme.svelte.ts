@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, PRESET_THEMES } from '$lib/theme/theme';
+import { DEFAULT_THEME, PRESET_THEMES, presetSwatch } from '$lib/theme/theme';
 import type { ThemeConfig, TintLevel } from '$lib/types/types';
 
 // ---------------------------------------------------------------------------
@@ -7,29 +7,47 @@ import type { ThemeConfig, TintLevel } from '$lib/types/types';
 // The first build carried its own palette in app.css: a calm rose ground with
 // `--accent: #a63d62` light / `#e78fae` dark, and a dark mode written as "the
 // same design rather than an inversion of it." That file was replaced by the
-// family's, and the colour would otherwise have been lost with it.
+// family's, and the colour would otherwise have been lost with it — so it
+// lived HERE, in this app's own store, because `$lib/theme/theme.ts` is a
+// MIRROR (origin: resonance-awen/standalone/theme/theme.ts) and a hand-edit
+// there is drift the next shelf run erases.
 //
-// It is NOT added to PRESET_THEMES, because `$lib/theme/theme.ts` is a MIRROR
-// (origin: resonance-awen/standalone/theme/theme.ts) and a hand-edit there is
-// drift the next shelf run erases. It lives here instead, in this app's own
-// store, which is this app's own file.
+// RECONCILED 2026-08-23 (the special-attention sitting the 08-22 row named):
+// at KP's word of 2026-08-22 — "there is a rose color in the sirens onboarding
+// and settings we should bring into the cosmic design system" — the rose went
+// into cosmic as `sirens.rose` (#E78FAE, the same hex) and the shelf's theme
+// table grew a `rose` preset from it. So the rose is read FROM the shelf now,
+// and this list is DERIVED from the shelf's table rather than hand-kept — which
+// is how Rainbow and Progress Pride arrive here without a line being written
+// for them, and how any preset born later will too.
 // ---------------------------------------------------------------------------
 
-/** The founding rose. "An app someone opens on a hard day." */
-export const SIRENS_ROSE = '#e78fae';
+/** The founding rose — the shelf's own token now. "An app someone opens on a
+ *  hard day." Kept as a named export because `rose()` and the default read it. */
+export const SIRENS_ROSE = PRESET_THEMES.rose.accentColor;
 
-/** THE SEVEN, in one place, so Settings and the onboarding walk cannot drift.
- *  Rose leads because it is this app's own default; the six behind it are the
- *  family's, in the mirror's own order. */
-export const SIRENS_THEMES = [
-	{ key: 'rose', icon: '🌹', name: 'Rose', accent: SIRENS_ROSE },
-	{ key: 'dark', icon: '🌙', name: 'Dark', accent: PRESET_THEMES.dark.accentColor },
-	{ key: 'warm', icon: '🔥', name: 'Warm', accent: PRESET_THEMES.warm.accentColor },
-	{ key: 'ocean', icon: '🌊', name: 'Ocean', accent: PRESET_THEMES.ocean.accentColor },
-	{ key: 'forest', icon: '🌲', name: 'Forest', accent: PRESET_THEMES.forest.accentColor },
-	{ key: 'sunset', icon: '🌅', name: 'Sunset', accent: PRESET_THEMES.sunset.accentColor },
-	{ key: 'amoled', icon: '⚫', name: 'AMOLED', accent: PRESET_THEMES.amoled.accentColor }
-] as const;
+/** Rose leads because it is this app's own default; the family follows in the
+ *  shelf's own order. A display-name tweak or two is dress; the KEY is what is
+ *  stored, and the key is the shelf's. */
+const ROSE_FIRST = ['rose', ...Object.keys(PRESET_THEMES).filter((k) => k !== 'rose')];
+
+/** EVERY preset the shelf holds, in one place, so Settings and the onboarding
+ *  walk cannot drift — and a flag preset carries its stripes as its swatch. */
+export const SIRENS_THEMES = ROSE_FIRST.map((key) => {
+	const t = PRESET_THEMES[key];
+	return {
+		key,
+		icon: t.icon ?? '✨',
+		/** The card's label — dress; AMOLED reads shorter on a card. */
+		name: key === 'amoled' ? 'AMOLED' : t.presetName,
+		/** What `setPreset` actually stores — match the active card on THIS,
+		 *  never on the accent (Dark and AMOLED share one) and never on the
+		 *  label (AMOLED's label is shortened above). */
+		presetName: t.presetName,
+		accent: t.accentColor,
+		swatch: presetSwatch(t)
+	};
+});
 
 // Only the colour is Sirens' own; mode, text size and tint are the family's
 // defaults, and the reader's to change (the Echoes shape, 2026-08-21, carried
@@ -66,17 +84,14 @@ export const themeStore = {
 			config = { ...SIRENS_DEFAULT };
 		}
 	},
-	/** Takes any of the seven, rose included, so onboarding and Settings can
-	 *  both speak one vocabulary. Takes the preset's COLOUR only: display mode,
+	/** Takes any preset the shelf holds, rose included, so onboarding and
+	 *  Settings both speak one vocabulary. Takes the preset's COLOUR only: display mode,
 	 *  font size and tint are the reader's own choices and survive untouched —
 	 *  the one exception being a preset that declares a mode because its
 	 *  identity IS a mode (AMOLED). */
 	setPreset(presetName: string) {
-		if (presetName === 'rose') {
-			config = { ...config, accentColor: SIRENS_ROSE, presetName: 'Rose' };
-			persist();
-			return;
-		}
+		// 'rose' resolves through the shelf's table like every other key now —
+		// the special case of 08-18 retired with the reconciliation above.
 		const preset = PRESET_THEMES[presetName];
 		if (!preset) return;
 		config = {

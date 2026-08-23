@@ -1,6 +1,6 @@
 {
   "name": "resonance-sirens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A sovereign cycle tracker. Press an emoji, add your temperature and a note - nothing ever leaves your device.",
   "type": "module",
   "scripts": {

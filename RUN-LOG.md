@@ -12,3 +12,4 @@
 2026-08-18 · sovereignty · the-envelope vendored as a MIRROR; export/import/purge wired through seal/open/purgeAfter rather than a second copy of the shape
 2026-08-18 · settings · Theme moved to the top to match the family layout; seven choices (Rose + the mirror's six); onboarding offers six with Rose leading
 2026-08-18 21:24 · android · release built green - four libresonance_sirens_lib.so, Rust.kt loading the new name, unsigned APK + AAB on the shelf; signing is KP's hand
+2026-08-23 01:37 · settings · rebuilt in Echoes' layout (header · theme · circles · sky · data sovereignty · about); theme list derived from the shelf, Rose leading — Rainbow and Progress Pride on the wall and at the door with stripe swatches; purge now clears localStorage and reloads, as the mother's does; check 0/0 · build clean

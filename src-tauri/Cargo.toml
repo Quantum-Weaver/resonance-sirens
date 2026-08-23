@@ -1,6 +1,6 @@
 [package]
 name = "resonance-sirens"
-version = "0.1.0"
+version = "0.1.1"
 description = "A sovereign cycle tracker. Nothing ever leaves your device."
 authors = ["Quantum Weaver"]
 repository = "https://github.com/Quantum-Weaver/resonance-sirens"

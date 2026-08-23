@@ -33,16 +33,21 @@
 	// derived from the shelf itself, never hardcoded, so a new preset
 	// appears here the day it is born (KP's word: "it adds the other
 	// available styles choices").
-	// THE DOOR OFFERS SIX OF THE SEVEN. Rose is this app's own and leads;
-	// AMOLED sits out of the walk and stays available in Settings, because at
-	// the door six cards read as a choice and seven read as a form.
-	// (KP, 2026-08-18: "swap out one and use rose in the onboarding, but keep
-	// all 7 choices in the settings.")
+	// THE DOOR OFFERS EVERY PRESET BUT AMOLED. Rose is this app's own and leads;
+	// AMOLED sits out of the walk and stays available in Settings (KP,
+	// 2026-08-18: "swap out one and use rose in the onboarding, but keep all 7
+	// choices in the settings" — his one standing word on the door's roster).
+	// The list is the store's, derived from the shelf, so RAINBOW and PROGRESS
+	// PRIDE stand at the door from 2026-08-23 without a line written for them
+	// (KP, 2026-08-22: "include a rainbow and inclusive pride themes in our
+	// settings as well in our epagoge onboarding walk"), each wearing its
+	// stripes as its swatch.
 	const themeOffers = SIRENS_THEMES.filter((t) => t.key !== 'amoled').map((t) => ({
 		key: t.key,
 		name: t.name,
 		icon: t.icon,
-		accent: t.accent
+		accent: t.accent,
+		swatch: t.swatch
 	}));
 
 	const STEPS: StepDef[] = [
@@ -213,7 +218,7 @@
 						>
 							<span class="theme-icon">{opt.icon}</span>
 							<span class="theme-name">{opt.name}</span>
-							<div class="theme-swatch" style="background: {opt.accent};"></div>
+							<div class="theme-swatch" style="background: {opt.swatch};"></div>
 						</button>
 					{/each}
 				</div>
