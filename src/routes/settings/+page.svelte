@@ -25,6 +25,7 @@
 	import type { Moment } from '$lib/record';
 
 	const SIZES = ['small', 'medium', 'large'] as const;
+	const TINTS = ['off', 'subtle', 'full'] as const;
 	const MODES = [
 		{ key: 'dark', label: 'Dark' },
 		{ key: 'light', label: 'Light' },
@@ -166,6 +167,19 @@
 						class:active={themeStore.config.fontSize === size}
 						onclick={() => themeStore.setFontSize(size)}
 					>{size}</button>
+				{/each}
+			</div>
+		</div>
+
+		<div class="row">
+			<span class="row-label">Background tint</span>
+			<div class="chips" role="group" aria-label="Background tint">
+				{#each TINTS as tint (tint)}
+					<button
+						class="chip"
+						class:active={themeStore.config.tint === tint}
+						onclick={() => themeStore.setTint(tint)}
+					>{tint}</button>
 				{/each}
 			</div>
 		</div>

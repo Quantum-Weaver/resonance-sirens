@@ -18,8 +18,9 @@
 		.catch(() => {});
 
 	// Default-collapsed on every platform (Compass pattern): the content is the
-	// destination, the nav is a drawer — even on desktop.
-	let open = $state(false);
+	// destination, the nav is a drawer — even on desktop. The open flag lives in
+	// uiStore because the control that toggles it is in the ComfortBar (2026-08-21).
+	const open = $derived(uiStore.navOpen);
 
 	// THE SHRINE — the sidebar consumes the-cumdach (the spring's navigation
 	// shell; Compass proved it, Bubbles walked this road first and Echoes
@@ -65,7 +66,9 @@
 		emojis: ['🔴', '🟠', '🟣', '⚪'],
 	};
 	// The ComfortBar (48px, fixed, z-index 110) is a declared edge, honored by
-	// arithmetic — an INPUT, never a CSS-only mend.
+	// arithmetic — an INPUT, never a CSS-only mend. It is the ONLY edge: the
+	// toggle that floated top-right moved inside the bar on 2026-08-22 (the
+	// Echoes remedy of 2026-08-21), so nothing floats over the drawer at all.
 	const RESERVED = 48;
 
 	let land = $state({ height: 900, reserved: RESERVED });
@@ -99,7 +102,7 @@
 
 	// The vessel opened the ComfortBar panel — they want to see it, not the nav.
 	$effect(() => {
-		if (uiStore.comfortBarExpanded) open = false;
+		if (uiStore.comfortBarExpanded) uiStore.setNavOpen(false);
 	});
 
 	onMount(() => {
@@ -110,32 +113,24 @@
 
 	function navigate(href: string) {
 		goto(href);
-		open = false;
-	}
-
-	function toggle() {
-		open = !open;
+		uiStore.setNavOpen(false);
 	}
 </script>
 
-<!-- Hamburger (always visible) -->
-<button
-	class="hamburger"
-	onclick={toggle}
-	aria-label={open ? 'Close navigation' : 'Open navigation'}
-	aria-expanded={open}
->
-	{open ? '✕' : '☰'}
-</button>
+<!-- The toggle lives in the ComfortBar (see ComfortBar.svelte). In Sirens it
+     floated TOP RIGHT at KP's word (2026-08-18, twice — his reasons are kept
+     whole in the styles below); on 2026-08-22 it moved inside the bar with the
+     rest of the family (the Echoes remedy of 2026-08-21): inside the bar it
+     shares the bar's own layer and can cover nothing, in any corner. -->
 
 <!-- Backdrop — dismisses the sidebar on outside interaction whenever it's open,
-     desktop or mobile, since the hamburger toggle is always visible on both. -->
+     desktop or mobile, since the ComfortBar toggle is always visible on both. -->
 {#if open}
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
 		class="backdrop"
-		onclick={() => (open = false)}
-		onkeydown={(e) => { if (e.key === 'Escape') open = false; }}
+		onclick={() => uiStore.setNavOpen(false)}
+		onkeydown={(e) => { if (e.key === 'Escape') uiStore.setNavOpen(false); }}
 		role="presentation"
 	></div>
 {/if}
@@ -203,29 +198,15 @@
 </nav>
 
 <style>
-	/* TOP RIGHT — KP, 2026-08-18, twice. At the bottom it sat on top of the
-	   Settings foot door; at the top left it covered the app name, both the
-	   page's own title and the sidebar's wordmark, which are both left-aligned.
-	   The top right is the one corner nothing else occupies: the FAB is bottom
-	   right, the ComfortBar is the bottom edge. */
-	.hamburger {
-		position: fixed;
-		top: calc(0.75rem + env(safe-area-inset-top, 0px));
-		right: 1rem;
-		z-index: 120;
-		background-color: var(--bg-surface);
-		border: 1px solid var(--border-color);
-		color: var(--text);
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 8px;
-		font-size: 1.1rem;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-	}
+	/* The toggle's history, kept whole — TOP RIGHT — KP, 2026-08-18, twice. At
+	   the bottom it sat on top of the Settings foot door; at the top left it
+	   covered the app name, both the page's own title and the sidebar's
+	   wordmark, which are both left-aligned. The top right is the one corner
+	   nothing else occupies: the FAB is bottom right, the ComfortBar is the
+	   bottom edge.
+	   2026-08-22: the family's remedy (Echoes, 2026-08-21) moved the toggle
+	   INSIDE the ComfortBar, where it shares the bar's own layer and covers
+	   nothing in any corner — so the floating button and its rule are gone. */
 
 	.backdrop {
 		position: fixed;
@@ -254,7 +235,9 @@
 		overflow-y: auto;
 		/* The ComfortBar (48px, fixed, z-index 110) always paints over the
 		   sidebar (50) — the foot must clear it or Settings is buried
-		   (Compass's desktop-walk lesson, inherited with the shrine). */
+		   (Compass's desktop-walk lesson, inherited with the shrine). Must stay
+		   equal to RESERVED in the script above: one edge, declared once,
+		   honored twice. */
 		padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
 	}
 

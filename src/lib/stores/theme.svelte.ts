@@ -1,5 +1,5 @@
-import { PRESET_THEMES } from '$lib/theme/theme';
-import type { ThemeConfig } from '$lib/types/types';
+import { DEFAULT_THEME, PRESET_THEMES } from '$lib/theme/theme';
+import type { ThemeConfig, TintLevel } from '$lib/types/types';
 
 // ---------------------------------------------------------------------------
 // SIRENS' OWN GROUND — the rose this app was founded in.
@@ -31,8 +31,11 @@ export const SIRENS_THEMES = [
 	{ key: 'amoled', icon: '⚫', name: 'AMOLED', accent: PRESET_THEMES.amoled.accentColor }
 ] as const;
 
+// Only the colour is Sirens' own; mode, text size and tint are the family's
+// defaults, and the reader's to change (the Echoes shape, 2026-08-21, carried
+// here 2026-08-22: a preset is a COLOUR IDENTITY, never a whole configuration).
 const SIRENS_DEFAULT: ThemeConfig = {
-	...PRESET_THEMES.dark,
+	...DEFAULT_THEME,
 	accentColor: SIRENS_ROSE,
 	presetName: 'Rose'
 };
@@ -56,22 +59,32 @@ export const themeStore = {
 		const stored = localStorage.getItem(STORAGE_KEY);
 		if (!stored) return;
 		try {
-			config = JSON.parse(stored) as ThemeConfig;
+			// Merged over the default, never cast blind: a config saved before a
+			// field existed keeps working instead of arriving undefined.
+			config = { ...SIRENS_DEFAULT, ...(JSON.parse(stored) as Partial<ThemeConfig>) };
 		} catch {
 			config = { ...SIRENS_DEFAULT };
 		}
 	},
 	/** Takes any of the seven, rose included, so onboarding and Settings can
-	 *  both speak one vocabulary. */
+	 *  both speak one vocabulary. Takes the preset's COLOUR only: display mode,
+	 *  font size and tint are the reader's own choices and survive untouched —
+	 *  the one exception being a preset that declares a mode because its
+	 *  identity IS a mode (AMOLED). */
 	setPreset(presetName: string) {
 		if (presetName === 'rose') {
-			config = { ...SIRENS_DEFAULT };
+			config = { ...config, accentColor: SIRENS_ROSE, presetName: 'Rose' };
 			persist();
 			return;
 		}
 		const preset = PRESET_THEMES[presetName];
 		if (!preset) return;
-		config = { ...preset };
+		config = {
+			...config,
+			accentColor: preset.accentColor,
+			presetName: preset.presetName,
+			...(preset.mode ? { mode: preset.mode } : {})
+		};
 		persist();
 	},
 	setMode(mode: 'dark' | 'light' | 'amoled') {
@@ -80,6 +93,10 @@ export const themeStore = {
 	},
 	setFontSize(size: 'small' | 'medium' | 'large') {
 		config = { ...config, fontSize: size };
+		persist();
+	},
+	setTint(tint: TintLevel) {
+		config = { ...config, tint };
 		persist();
 	},
 	/** An accent on its own, so the rose is reachable without touching the
