@@ -7,6 +7,25 @@
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/sirens-01.jpg" width="23%" alt="Resonance Sirens — welcome: your name, your sigil" />
+  <img src="screenshots/sirens-02.jpg" width="23%" alt="Resonance Sirens — how it works: log anything, see patterns, your data stays yours" />
+  <img src="screenshots/sirens-03.jpg" width="23%" alt="Resonance Sirens — choose your atmosphere: eight themes, Rose leading" />
+  <img src="screenshots/sirens-04.jpg" width="23%" alt="Resonance Sirens — home, the menu open: Home · Calendar · Sattva · Timer · Settings" />
+  <img src="screenshots/sirens-05.jpg" width="23%" alt="Resonance Sirens — a moment: ten circles, a temperature, a note" />
+  <img src="screenshots/sirens-06.jpg" width="23%" alt="Resonance Sirens — the calendar, a moon on every day, nothing counted" />
+  <img src="screenshots/sirens-07.jpg" width="23%" alt="Resonance Sirens — settings: your circles, a word under any of them if you want one" />
+  <img src="screenshots/sirens-08.jpg" width="23%" alt="Resonance Sirens — settings: the sky, shown or hidden" />
+  <img src="screenshots/sirens-09.jpg" width="23%" alt="Resonance Sirens — settings: data sovereignty — export, import, purge" />
+</p>
+
+*Taken on KP's own phone, 2026-08-23, in the Rose theme. The originals stay in
+`resonance-assets/screenshots/sirens/`.*
+
+---
+
 ## WHAT IT IS
 
 Ten coloured circles. You press one, and that moment is kept — the time it
