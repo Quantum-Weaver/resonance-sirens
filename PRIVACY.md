@@ -19,8 +19,8 @@ are, we cannot see your presses, your notes, or your calendar, and we have nothi
 hold nothing.
 
 ## What the app keeps, and where
-Everything you create in Resonance Sirens — a pressed circle and its time, a temperature if you enter
-one, a note if you write one, the word you choose to put under a circle, your theme and settings — is
+Everything you create in Resonance Sirens — a pressed emoji and its time, a note if you write one,
+the word you choose to put under an emoji, any number you enter beside a moment, your theme and settings — is
 stored **only in the app's local storage on your device**. It is not uploaded, backed up to us, or
 synced to any cloud. If you uninstall the app, your device removes that data.
 
@@ -28,7 +28,7 @@ synced to any cloud. If you uninstall the app, your device removes that data.
 Resonance Sirens makes **no network requests at all** and is fully offline. There is no account, no
 sync, and no optional online lookup of any kind — nothing in the code reaches out. (The app carries
 the standard `INTERNET` permission only because the framework it is built on declares it by default;
-no part of this app uses it.) Period- and cycle-tracking apps have a history of selling what they
+no part of this app uses it.) Apps that keep a personal calendar have a history of selling what they
 learn; the way not to sell what you learn is not to learn it, and this app does not learn it.
 
 ## Your control
@@ -38,11 +38,11 @@ learn; the way not to sell what you learn is not to learn it, and this app does 
   purge is real, not a soft-delete.
 
 ## Special care for this data
-Cycle and body data can be among the most sensitive things a person records, and the people this app
-is built for may be in places where that data carries real risk. Our protection is architectural:
-because it never leaves your device and we never receive it, there is nothing for us to misuse, leak,
-sell, or be compelled to hand over. Sovereignty is the safeguard. The circles have no names in the
-app — nothing in the program knows what any colour means to you, and it never finds out.
+A personal calendar of moments can be among the most sensitive things a person keeps, and the meanings
+you give your emoji are yours alone. Our protection is architectural: because that data never leaves
+your device and we never receive it, there is nothing for us to misuse, leak, sell, or be compelled to
+hand over. Sovereignty is the safeguard. The emoji have no definitions in the app — nothing in the
+program knows what any of them means to you, and it never finds out.
 
 ## Children
 This app is not directed to children under 13, and we do not knowingly collect data from anyone —

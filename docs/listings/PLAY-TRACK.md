@@ -20,7 +20,7 @@ compose at the upload screen.*
 | Permissions | ✅ minimal: `INTERNET` (Tauri webview default; the app makes no network calls — verified by grep: no `fetch`, no HTTP crate) + the system's own self-scoped `DYNAMIC_RECEIVER_NOT_EXPORTED` — data-safety answers stay "collects nothing" |
 | Privacy policy | ✅ `PRIVACY.md` in-repo (effective 2026-08-23, the family policy adapted: no network, not even optional) → URL `https://github.com/Quantum-Weaver/resonance-sirens/blob/main/PRIVACY.md` — ⚠ **the repo answered 404 to an unauthenticated GET on 2026-08-23: it is PRIVATE today. The URL only works once the repo is public, and whether it goes public is KP's ⚛ gate.** |
 | Content rating | ✅ no UGC · no ads · no purchases · no collection → answer the literal questions; see below |
-| Category | 🚪 **his ⚛ ruling.** Echoes' precedent is **Lifestyle** (KP ⚛ 2026-08-21: *"echoes does not need to be a heath app"*), which avoided the mental-health declaration that requires an organization account. Sirens is a cycle tracker; Play's health-apps declaration may be asked whatever category is chosen. The app makes **no medical claim** — it has no vocabulary, counts nothing, predicts nothing. Answer the Console's literal questions; never claim a feature it does not have. |
+| Category | ✅ **Lifestyle — not health. RULED ⚛ 2026-08-23:** *"keep in mind we are not listing anything about health for this, it is a simple calendar app to track moments with the emoji definitions belonging to the user."* Echoes' precedent holds (KP ⚛ 2026-08-21: *"echoes does not need to be a heath app"*), which is what avoids the health declarations. The listing below carries no health word; the app makes no claim — it has no vocabulary, counts nothing, predicts nothing. Answer the Console's literal questions; never claim a feature it does not have. |
 
 ## The upload pack (KP's hands)
 
@@ -40,37 +40,37 @@ compose at the upload screen.*
 Resonance Sirens
 ```
 
-### Short description (80 char max — this is 77)
+### Short description (80 char max — this is 74)
 
 ```
-A cycle tracker with no names and no counts. Nothing ever leaves your device.
+A simple calendar for your moments. The emoji mean what you say they mean.
 ```
 
-### Full description — paste-ready (the README's own telling)
+### Full description — paste-ready (KP's ⚛ framing, 2026-08-23: a simple calendar app to track moments with the emoji definitions belonging to the user)
 
 ```
-Ten coloured circles. You press one, and that moment is kept — the time it
-happened, and, if you want them, your temperature and a note. That is the
-whole of it.
+A simple calendar for your moments.
 
-The circles have no names. Nothing in this app knows what red means to you,
-or green, or the hollow one, and it never finds out — you can write your own
-word under any of them, on your own device, and even then the program only
-ever hands it back to you. Every other tracker asks a woman to translate her
-body into someone else's vocabulary. This one doesn't have a vocabulary.
+Ten emoji. You press one, and that moment is kept — the day, the time, and
+a note if you feel like writing one. That is the whole of it.
 
-There are no counts here, no streaks, no missed days. Nothing is measured
-against an average, because there is no average, because nothing is counted.
-The calendar shows your circles on the days you pressed them and says nothing
-at all about the days you didn't.
+The emoji have no names and no definitions until you give them one. Nothing
+in this app decides what a red circle means, or a green one, or the hollow
+one — you can write your own word under any of them, on your own device,
+and even then the app only ever hands it back to you. The meanings belong
+to you. It doesn't have a vocabulary of its own, and it never learns yours.
 
-Nothing leaves the device. There is no account, no sync, and no network call
-anywhere in the code — not even an optional one. It was built this way
-because period-tracking apps sell what they learn, and the way not to sell
-what you learn is not to learn it.
+There are no counts, no streaks, no missed days. Nothing is measured against
+an average, because nothing is counted. The calendar shows your emoji on the
+days you pressed them and says nothing at all about the days you didn't — a
+day you skipped looks exactly like a day you didn't.
 
-★ Ten circles, yours to mean whatever they mean to you.
-★ A temperature and a note, only if you want them.
+Nothing leaves your device. There is no account, no sync, and no network
+call anywhere in the code — not even an optional one. The way not to sell
+what an app learns about you is for it not to learn anything.
+
+★ Ten emoji, and their meanings are yours to write — or leave unwritten.
+★ One press keeps a moment; a note only if you want one.
 ★ A calendar with a moon on every day, and no judgement on any of them.
 ★ Eight themes, Rose leading; the sky shown or hidden.
 ★ Export everything, import it back, or purge it — truly gone.
@@ -86,8 +86,8 @@ with sensory consideration and dignity as the ground floor.
 
 ```
 <en-US>
-The first release: ten circles with no names, a moment kept at one press —
-with a temperature and a note if you want them — a calendar that counts
+The first release: ten emoji whose meanings are yours to write, a moment
+kept at one press — with a note if you want one — a calendar that counts
 nothing, eight themes, and a data sovereignty room where export, import and
 purge are real. No account, no network, nothing leaves your device.
 </en-US>
@@ -108,8 +108,9 @@ purge are real. No account, no network, nothing leaves your device.
   sexuality, no profanity, no controlled substances, no gambling, no UGC, no
   location sharing, no personal-data sharing. → expect **Everyone**; the
   Console decides.
-- The app tracks a body's cycle and is honest about it. This is content, not
-  a rating trigger — answer the questionnaire's literal questions as asked.
+- A calendar of moments with user-defined emoji: no health, medical or
+  fitness feature is offered, claimed or listed (KP ⚛ 2026-08-23). Answer the
+  questionnaire's literal questions as asked.
 
 ## Track log
 
