@@ -1,17 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// QUICK ADD — the dialog that enters a moment
-	// ==========================================================================
-	//
-	// KP, 2026-08-18: "the calendar should show a 'quick add' button that opens
-	// the dialog to enter a moment."
-	//
-	// One component, both rooms. Home opens it on today; the calendar opens it on
-	// whatever day she is looking at — including a day ahead of her, because she
-	// may be planning rather than recording.
-	//
-	// A native <dialog>, so Escape closes it and focus is handled by the browser
-	// rather than by hand.
 
 	import { record } from '$lib/moments.svelte';
 	import { CIRCLES, tintOf } from '$lib/circles';

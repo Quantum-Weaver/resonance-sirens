@@ -9,25 +9,16 @@
 	import { derive, rederive, wear, type Menu, type Shrine, type Door } from '$lib/cumdach';
 	import { QUANTUM_COLORS } from '$lib/cosmic';
 
-	// The wordmark law, learned from Bubbles: the chrome reads the app's OWN
-	// name (productName in tauri.conf.json is the single truth), so a rename
-	// never gets chased into the chrome. Outside Tauri the fallback stands.
+	// The chrome reads the app's OWN name — productName in tauri.conf.json is the single truth. Outside Tauri the fallback stands.
 	let appName = $state('Sirens');
 	getName()
 		.then((n) => { appName = n.replace(/^Resonance\s+/i, ''); })
 		.catch(() => {});
 
-	// Default-collapsed on every platform (Compass pattern): the content is the
-	// destination, the nav is a drawer — even on desktop. The open flag lives in
-	// uiStore because the control that toggles it is in the ComfortBar (2026-08-21).
+	// The open flag lives in uiStore; the control that toggles it is in the ComfortBar.
 	const open = $derived(uiStore.navOpen);
 
-	// THE SHRINE — the sidebar consumes the-cumdach (the spring's navigation
-	// shell; Compass proved it, Bubbles walked this road first and Echoes
-	// learns from it). The app declares the particulars — a FLAT door list
-	// and the Settings foot, by KP's ⚛ stroke: no hats until the realm grows
-	// rooms; the arithmetic handles growth — and the panels are DERIVED from
-	// the screen's own measure, never arranged by opinion.
+	// THE SHRINE — the sidebar consumes the-cumdach. The app declares the particulars: a FLAT door list and the Settings foot; the panels are DERIVED from the screen's own measure.
 	type EchoesDoor = Door & { href: string; icon: IconName };
 
 	const door = (id: string, href: string, icon: IconName, label: string): EchoesDoor => ({
@@ -44,17 +35,10 @@
 			door('sattva', '/sattva', 'sattva', 'Sattva'),
 			door('timer', '/timer', 'timer', 'Timer'),
 		],
-		// Sattva and Timer came across with the Echoes body and are KEPT at KP's
-		// word, 2026-08-18 — so they carry doors. A room that is wanted and has
-		// no door is unreachable in a Tauri window: there is no address bar to
-		// type into. /onboarding is the exception and needs none — the layout
-		// sends her there on a first run and she leaves by finishing it.
 		foot: { door: door('settings', '/settings', 'settings', 'Settings') },
 	};
 
-	// The shrine's costs in this app's own pixels (the 44px calm floor lives
-	// inside the door cost, gap included; over-reserving errs safe), and the
-	// faces — cosmic's colors, the app's emoji; words always ride underneath.
+	// The shrine's costs in this app's own pixels (the 44px calm floor lives inside the door cost, gap included), and the faces.
 	const COSTS = { door: 48, head: 64, switchButton: 58, switchColumns: 2 };
 	const PALETTE = {
 		colors: [
@@ -65,10 +49,7 @@
 		],
 		emojis: ['🔴', '🟠', '🟣', '⚪'],
 	};
-	// The ComfortBar (48px, fixed, z-index 110) is a declared edge, honored by
-	// arithmetic — an INPUT, never a CSS-only mend. It is the ONLY edge: the
-	// toggle that floated top-right moved inside the bar on 2026-08-22 (the
-	// Echoes remedy of 2026-08-21), so nothing floats over the drawer at all.
+	// The ComfortBar (48px, fixed, z-index 110) is a declared edge, honored by arithmetic — an INPUT, never a CSS-only mend.
 	const RESERVED = 48;
 
 	let land = $state({ height: 900, reserved: RESERVED });
@@ -78,9 +59,7 @@
 		land = { height: window.innerHeight, reserved: RESERVED };
 	}
 
-	// DYNAMICS ALWAYS RE-DERIVE — any new land (rotation, resize, a phone's
-	// keyboard) re-runs the pure formula; the worn panel survives by its
-	// place when it still exists.
+	// Any new land (rotation, resize, a phone's keyboard) re-runs the formula; the worn panel survives by its place when it still exists.
 	$effect(() => {
 		const l = land;
 		shrine = rederive(
@@ -117,14 +96,7 @@
 	}
 </script>
 
-<!-- The toggle lives in the ComfortBar (see ComfortBar.svelte). In Sirens it
-     floated TOP RIGHT at KP's word (2026-08-18, twice — his reasons are kept
-     whole in the styles below); on 2026-08-22 it moved inside the bar with the
-     rest of the family (the Echoes remedy of 2026-08-21): inside the bar it
-     shares the bar's own layer and can cover nothing, in any corner. -->
-
-<!-- Backdrop — dismisses the sidebar on outside interaction whenever it's open,
-     desktop or mobile, since the ComfortBar toggle is always visible on both. -->
+<!-- Backdrop — dismisses the sidebar on outside interaction whenever it's open. -->
 {#if open}
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
@@ -138,15 +110,11 @@
 <!-- Sidebar panel -->
 <nav class="sidebar" class:open aria-label="Main navigation">
 	<div class="sidebar__header">
-		<!-- cosmic-sparkle-text adds the animated glow; the scoped accent color
-		     below outranks its light-gray color so light mode stays readable. -->
+		<!-- cosmic-sparkle-text adds the animated glow; the scoped accent color below outranks its light-gray color so light mode stays readable. -->
 		<span class="sidebar__wordmark cosmic-sparkle-text">{appName}</span>
 	</div>
 
-	<!-- The switch — derived, never arranged. Faces wear color + emoji (THE
-	     FACE LAW), the words always ride underneath; the worn panel holds
-	     until tapped again. At one panel, no switch is derived at all —
-	     which is this menu's everyday truth at four doors. -->
+	<!-- The switch — derived, never arranged. At one panel, no switch is derived at all. -->
 	{#if shrine.switchShown}
 		<div
 			class="mode-switch"
@@ -198,22 +166,12 @@
 </nav>
 
 <style>
-	/* The toggle's history, kept whole — TOP RIGHT — KP, 2026-08-18, twice. At
-	   the bottom it sat on top of the Settings foot door; at the top left it
-	   covered the app name, both the page's own title and the sidebar's
-	   wordmark, which are both left-aligned. The top right is the one corner
-	   nothing else occupies: the FAB is bottom right, the ComfortBar is the
-	   bottom edge.
-	   2026-08-22: the family's remedy (Echoes, 2026-08-21) moved the toggle
-	   INSIDE the ComfortBar, where it shares the bar's own layer and covers
-	   nothing in any corner — so the floating button and its rule are gone. */
 
 	.backdrop {
 		position: fixed;
 		inset: 0;
 		z-index: 49;
-		/* Transparent (Compass pattern): dismissal surface, not a dimmer —
-		   the drawer is small and the content should stay readable. */
+		/* Transparent: a dismissal surface, not a dimmer. */
 		background-color: transparent;
 	}
 
@@ -233,11 +191,7 @@
 		display: flex;
 		flex-direction: column;
 		overflow-y: auto;
-		/* The ComfortBar (48px, fixed, z-index 110) always paints over the
-		   sidebar (50) — the foot must clear it or Settings is buried
-		   (Compass's desktop-walk lesson, inherited with the shrine). Must stay
-		   equal to RESERVED in the script above: one edge, declared once,
-		   honored twice. */
+		/* The ComfortBar (48px, fixed, z-index 110) always paints over the sidebar (50), so the foot must clear it. Must stay equal to RESERVED in the script above. */
 		padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
 	}
 

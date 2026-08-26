@@ -1,14 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// ONE CIRCLE, AND HER WORD FOR IT — a Settings row
-	// ==========================================================================
-	//
-	// KP, 2026-08-18: "what i see in the home screen now, should be in setting
-	// screen." The ten circles were standing on Home as permanent cards; that was
-	// a misread. Home is the log. This is where the circles live.
-	//
-	// The word is hers. The app ships none, suggests none, and never reads one
-	// back for meaning — it stores it beside the glyph and hands it back to her.
 
 	import { record } from '$lib/moments.svelte';
 	import { tintOf } from '$lib/circles';

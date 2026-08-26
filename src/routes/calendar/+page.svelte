@@ -1,23 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// THE CALENDAR — the logged entries, on the days they were put down
-	// ==========================================================================
-	//
-	// KP, 2026-08-18: "the logged entries are translated into the calendar view"
-	// and "calendar needs to include the weekly and daily views available."
-	//
-	// Three views over ONE source. Nothing here holds a record of its own:
-	// `byDay(record.moments)` is computed at read time and dropped, so the
-	// calendar is a way of looking at the log rather than a second copy of it.
-	//
-	//   Month — the ribbon of weeks, captions where a month turns
-	//   Week  — one week, its seven squares, and the day she taps opened beneath
-	//   Day   — one day on its own, stepped with the arrows
-	//
-	// The arrows and `later weeks` reach FORWARD as far as she asks. KP,
-	// 2026-08-18: "a calendar that cannot look a year into the future is hardly
-	// a calendar" — "women plan pregnancies with such things." She can put a
-	// circle on a day ahead of her the same way she can on one behind.
 
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/state';
@@ -37,8 +18,7 @@
 	/** One shared list for every day she has put nothing on. */
 	const NOTHING: Moment[] = [];
 
-	/** The calendar's own arithmetic, from her own local date — never a bare
-	 *  clock read, never a subtraction of milliseconds. */
+	/** The calendar's own arithmetic, from her own local date — never a subtraction of milliseconds. */
 	function dayOf(key: DayKey): Date {
 		const [y, m, d] = key.split('-').map(Number);
 		return new Date(y, m - 1, d);
@@ -69,7 +49,7 @@
 		openKey === null ? null : (rows.flatMap((w) => w.days).find((d) => d.key === openKey) ?? null)
 	);
 
-	// --- week and day, both built from the same one-week window
+	// --- week and day
 	const window1 = $derived(ribbon(anchor, 1)[0]);
 	const anchorKey = $derived(
 		`${anchor.getFullYear()}-${String(anchor.getMonth() + 1).padStart(2, '0')}-${String(anchor.getDate()).padStart(2, '0')}`
@@ -79,25 +59,21 @@
 		openKey === null ? null : (window1.days.find((d) => d.key === openKey) ?? null)
 	);
 
-	/** Forward is not capped. KP, 2026-08-18: "a calendar that cannot look a
-	 *  year into the future is hardly a calendar" — "women plan pregnancies with
-	 *  such things." An earlier version stopped at today; that was my rule, and
-	 *  it made the sovereign app worse at the job the harvesting ones do fine. */
+	/** Forward is not capped. */
 	function step(n: number) {
 		anchor = shift(anchor, n);
 		openKey = null;
 	}
 
 	function setView(v: View) {
-		// Carry the day she was looking at across the switch. Tapping a day in
-		// Month and then choosing Day lands on that day, not back on today.
+		// Carry the day she was looking at across the switch.
 		if (openKey) anchor = dayOf(openKey);
 		view = v;
 		openKey = null;
 	}
 
 	/** The day the quick add lands on: whichever she has open, else the one she
-	 *  is stepped to, else today. She may be planning, so a day ahead is fine. */
+	 *  is stepped to, else today. */
 	const addKey = $derived(openKey ?? (view === 'month' ? tkey : anchorKey));
 	const addDay = $derived(
 		rows.flatMap((w) => w.days).find((d) => d.key === addKey) ??
@@ -113,8 +89,7 @@
 		prefs.load();
 		if (!record.loaded) void record.load();
 
-		// Arrived from a card's "show in calendar" — land on that day, in that
-		// view, rather than at the bottom of the ribbon.
+		// Arrived from a card's "show in calendar" — land on that day, in that view.
 		const q = page.url.searchParams;
 		const wanted = q.get('view');
 		const on = q.get('day');
@@ -223,9 +198,7 @@
 	{/if}
 
 	{#if view === 'day' && theDay !== null}
-		<!-- In Month and Week the panel's close collapses it back into the grid it
-		     opened out of. In Day there is no grid behind it, so close goes back to
-		     Month — otherwise the button is dead, which is what it was. -->
+		<!-- In Day there is no grid behind the panel, so close goes back to Month. -->
 		<DayPanel day={theDay} moments={days.get(theDay.key) ?? NOTHING} onclose={() => setView('month')} />
 	{/if}
 
@@ -371,9 +344,7 @@
 		color: var(--text-secondary);
 	}
 
-	/* Echoes' own geometry — seven equal columns, the day stacked inside, and
-	   the same 0.3rem the seven-day strip uses at insights/+page.svelte:575.
-	   The separation is the GRID's, not the cell's. */
+	/* Seven equal columns — the separation is the GRID's, not the cell's. */
 	.week {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
@@ -391,7 +362,6 @@
 		height: 0;
 	}
 
-	/* Echoes' FAB, at Echoes' own offsets. */
 	.fab {
 		position: fixed;
 		bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 0.75rem);

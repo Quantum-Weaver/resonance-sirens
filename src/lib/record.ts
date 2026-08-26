@@ -1,33 +1,3 @@
-// ============================================================================
-// THE RECORD — where a moment goes so she can find it again
-// ============================================================================
-//
-// ONE TABLE. A moment is: when it was, the symbol she pressed, optionally her
-// temperature, optionally a note. That is the whole schema and it is thin on
-// purpose.
-//
-// WHAT THIS FILE DELIBERATELY CANNOT DO, and it is the point of the app:
-//
-//   · There is no cycle table, no phase table, no prediction table. A cycle is
-//     DERIVED from moments at read time and never stored, because a stored
-//     cycle is a judgement about her body that outlives the day it was made.
-//     Same law as the-temporal: derive, never store.
-//   · There is no count function, no streak, no `since()`, no `missed()`.
-//     Nothing here knows what a missed day would be, so nothing here can
-//     grade one. (Carried verbatim in spirit from resonance-tarocchi's own
-//     record layer, and from KP's word: "no streaks, no counts, no
-//     missed-day language, ever.")
-//   · There is no network call in this file, or anywhere in this app.
-//
-// THE EMOJI IS NOT A CATEGORY. Every other tracker makes a woman translate her
-// body into someone else's vocabulary — light, medium, heavy, spotting. Here
-// the symbol is stored raw and the app never interprets it. KP's ruling of
-// 2026-07-31, carried in the emoji dataset's own header: "Names are for search
-// only - meaning is the vessel's own."
-//
-// AND FROM PHILOSOPHY.md: what is recorded must be exportable whole and
-// deletable permanently. Both are below, and `purge()` really purges.
-
 import { browser } from '$app/environment';
 
 export interface Moment {
@@ -41,9 +11,7 @@ export interface Moment {
 	note: string | null;
 }
 
-// ============================================================================
-// THE CONNECTION — with the guard that keeps `npm run dev` alive
-// ============================================================================
+// THE CONNECTION
 
 type Db = {
 	execute(query: string, values?: unknown[]): Promise<unknown>;
@@ -53,9 +21,7 @@ type Db = {
 let db: Db | null = null;
 let tried = false;
 
-/** `Database.load` throws outside Tauri, and dev is a plain browser. Without
- *  this the app dies in development, so it degrades to memory and says so
- *  rather than pretending. */
+/** `Database.load` throws outside Tauri, and dev is a plain browser. */
 export function inTauri(): boolean {
 	return browser && typeof (window as unknown as Record<string, unknown>).__TAURI_INTERNALS__ !== 'undefined';
 }
@@ -77,9 +43,7 @@ async function connect(): Promise<Db | null> {
 /** Moments held in memory when there is no database — a session, not a record. */
 let ephemeral: Moment[] = [];
 
-// ============================================================================
-// WRITING — one press
-// ============================================================================
+// WRITING
 
 /**
  * Capture a moment. `at` is taken here, once, so the time recorded is the time
@@ -113,19 +77,11 @@ export async function capture(
 /**
  * A moment she is placing on a day she has already lived.
  *
- * `capture()` above stamps the clock, because the time recorded should be the
- * time she pressed. This one takes the day from HER TAP on a day in the
- * calendar and from nowhere else - the app never back-dates anything on its
- * own, and no caller in this repo hands it a computed day.
+ * The day comes from HER TAP on a day in the calendar and from nowhere else.
  *
  * If she gives no time the moment is stored at local midnight, which this app
  * reads as SHE NAMED THE DAY, NOT THE HOUR - the calendar prints no clock time
- * for a midnight moment. That convention costs no column: nothing new is
- * stored about her body to carry a flag, and the schema is still the founding
- * one.
- *
- * There is still no way to record a day that has not happened. The calendar
- * offers this on today and earlier only, and this function is the only door.
+ * for a midnight moment.
  */
 export async function captureOn(
 	day: string,
@@ -156,7 +112,7 @@ export async function captureOn(
 	return moment;
 }
 
-/** Change a moment already recorded. Hers to correct; a record is not a verdict. */
+/** Change a moment already recorded. */
 export async function amend(
 	id: string,
 	patch: Partial<Pick<Moment, 'emoji' | 'tempC' | 'note'>>
@@ -183,12 +139,9 @@ export async function forget(id: string): Promise<void> {
 	else ephemeral = ephemeral.filter((m) => m.id !== id);
 }
 
-// ============================================================================
 // READING
-// ============================================================================
 
-/** Every moment, newest first. There is no paging and no limit by design —
- *  a year of daily presses is a few hundred rows. */
+/** Every moment, newest first. There is no paging and no limit. */
 export async function all(): Promise<Moment[]> {
 	const d = await connect();
 	if (!d) return [...ephemeral];
@@ -197,18 +150,7 @@ export async function all(): Promise<Moment[]> {
 	);
 }
 
-// ============================================================================
-// HER WORDS - the one thing stored that is not a moment
-// ============================================================================
-//
-// A word she typed under a circle, on her device, for her eyes. THE APP SHIPS
-// NO WORDS AND SUGGESTS NONE. It never reads one either: nothing in this
-// program branches on what a mark says, nothing groups by it, nothing exports
-// it as a claim about her body. A red circle with "heavy" beside it means, to
-// this code, exactly what a red circle with nothing beside it means - nothing.
-//
-// That is the line between HER vocabulary and a taxonomy, and it is the whole
-// reason this is allowed to exist at all.
+// HER WORDS
 
 /** Her words when there is no database - a session, not a record. */
 let ephemeralMarks: Record<string, string> = {};
@@ -224,8 +166,7 @@ export async function marks(): Promise<Record<string, string>> {
 }
 
 /** Set or clear her word for a circle. An empty word deletes the row rather
- *  than leaving a blank behind - there is no such thing here as a word she
- *  once had. */
+ *  than leaving a blank behind. */
 export async function mark(glyph: string, word: string | null): Promise<void> {
 	const w = word && word.trim() ? word.trim() : null;
 	const d = await connect();
@@ -242,9 +183,7 @@ export async function mark(glyph: string, word: string | null): Promise<void> {
 	}
 }
 
-// ============================================================================
-// SOVEREIGNTY — export whole, purge real
-// ============================================================================
+// SOVEREIGNTY
 
 /** Everything, for the envelope. */
 export async function everything(): Promise<Moment[]> {
@@ -252,13 +191,11 @@ export async function everything(): Promise<Moment[]> {
 }
 
 /**
- * Erase every moment. THE PURGE IS REAL — no soft delete, no tombstone, no
- * "deleted_at" column that a later version could resurrect. PRIVACY.md's own
- * words: "when you purge, it is truly gone."
+ * Erase every moment. THE PURGE IS REAL - no soft delete, no tombstone, no
+ * "deleted_at" column.
  *
- * The caller is expected to have offered the export first — the-envelope's
- * `purgeAfter` law — but this function does not enforce it, because a woman
- * who wants her data gone RIGHT NOW must not be made to perform a backup first.
+ * The caller is expected to have offered the export first; this function does
+ * not enforce it.
  */
 export async function purge(): Promise<void> {
 	const d = await connect();
@@ -271,7 +208,7 @@ export async function purge(): Promise<void> {
 }
 
 /** Merge imported moments without destroying what is here. Same id wins the
- *  one already present — an import never overwrites her own hand. */
+ *  one already present. */
 export async function absorb(incoming: Moment[]): Promise<{ added: number; kept: number }> {
 	const mine = await all();
 	const seen = new Set(mine.map((m) => m.id));

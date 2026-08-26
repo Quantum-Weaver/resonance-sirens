@@ -1,37 +1,4 @@
-// ============================================================================
-// THE DAYS — the only place this app turns moments into a calendar
-// ============================================================================
-//
-// What record.ts says, carried here because THIS is the file that could break it:
-// "A cycle is DERIVED from moments at read time and never stored." Everything
-// below is a pure function of her moments and a date. Nothing is written,
-// nothing is cached to disk, nothing survives the render.
-//
-// WHAT THIS FILE REFUSES TO COMPUTE, and the refusal IS the design:
-//
-//   · no length of anything — not a cycle, not a run, not a gap
-//   · no comparison of one stretch to another, no average, no "usual"
-//   · nothing at all about a day that has not happened
-//   · no meaning for any circle. `byDay` moves her circle onto the day she
-//     pressed it and that is the entire extent of its opinion.
-//
-// AND `byDay` RETURNS HER MOMENTS, NEVER HOW MANY THERE WERE. A function that
-// returned counts would hand the calendar a number it could render, and the
-// guard would then be a matter of someone's discipline instead of a matter of
-// what exists. The room's silence is structural.
-//
-// Even given a marker, "31 days" is a number about a body, and every number
-// about a body is silently measured against 28. The word `irregular` never has
-// to appear on a screen; the figure summons it in the reader. That is why
-// there is no figure.
-//
-// TODAY COMES FROM the-now, never from rolling date logic. Its own words:
-// "'what is today' is the one fact a program most often assumes and most often
-// gets wrong." src/lib/now is its byte-faithful mirror.
-//
-// AND ALL DAY ARITHMETIC GOES THROUGH THE LOCAL CALENDAR, never through
-// milliseconds — a day is not always 86,400,000 ms, and twice a year that is a
-// bug that puts her moment on the wrong square.
+// All day arithmetic goes through the local calendar, never milliseconds — a day is not always 86,400,000 ms.
 
 import { now, readMoment } from '$lib/now';
 import { moonPhase } from '$lib/sky';
@@ -64,8 +31,7 @@ export function byDay(moments: Moment[]): Map<DayKey, Moment[]> {
 /** Sunday. Hers to flip to 1. */
 export const WEEK_STARTS_ON = 0;
 
-/** Fixed English tables — the-now's own discipline. No locale variance, and no
- *  `toLocaleDateString` anywhere in the calendar. */
+/** Fixed English tables — no locale variance, and no `toLocaleDateString` in the calendar. */
 const MONTHS = [
 	'January',
 	'February',
@@ -90,9 +56,7 @@ export interface Day {
 	/** "Tuesday, 12 August 2026" — spoken to a reader, printed in a panel. */
 	spelled: string;
 	firstOfMonth: boolean;
-	/** The moon over that day. Furniture: identical for every woman, so it can
-	 *  encode nothing about her — which is exactly why it is safe here, and why
-	 *  nothing in this app may ever relate it to her moments. */
+	/** The moon over that day. */
 	moon: string;
 	moonName: string;
 }
@@ -131,10 +95,6 @@ function makeDay(date: Date): Day {
 /**
  * THE RIBBON — rows of seven around the week `anchor` falls in: `weeksBack`
  * before it, `weeksForward` after.
- *
- * It reaches forward as far as it is asked to. An earlier version stopped dead
- * at today, which was my invention and not KP's — his word, 2026-08-18: "a
- * calendar that cannot look a year into the future is hardly a calendar."
  */
 export function ribbon(anchor: Date, weeksBack: number, weeksForward = 0): Week[] {
 	const t = midnight(anchor);

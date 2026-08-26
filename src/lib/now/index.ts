@@ -1,31 +1,9 @@
 /**
  * the-now — the machine's clock, read and reported. Never interpreted.
  *
- * Born 2026-08-03 from KP's ⚛ real need, verbatim: *"i would like a tool
- * in awen that does that as well. so others including apps on this
- * machine can use it."* The sibling is `.claude/agents/clock.md`, which
- * gives a session the same reading; this gives it to everything else.
- *
- * WHY A TOOL FOR SOMETHING SO SMALL. Because "what is today" is the one
- * fact a program most often assumes and most often gets wrong: a build
- * stamps a hardcoded year, a log writes a date parsed from a filename, a
- * model states today's date from its training. Every one of those is a
- * guess wearing a fact's clothes. There is a clock on this machine. Ask
- * it.
- *
- * THE SHAPE, and it is deliberate:
- *
- *   readMoment(d)  PURE — a Date in, a Reading out. Testable, frozen,
- *                  same answer forever for the same input.
+ *   readMoment(d)  PURE — a Date in, a Reading out.
  *   now()          the ONE impure line in this tool. It touches the
  *                  clock and hands the result to readMoment.
- *
- * Everything a caller might want to compute — "three days from now",
- * "is this stale" — is the caller's arithmetic on a Reading, not work
- * this tool volunteers. Reading, never ruling. `the-temporal` is the
- * sibling that does windows; this one only says when it is.
- *
- * Framework-free. Zero dependencies. Zero imports.
  */
 
 export interface Reading {
@@ -58,17 +36,14 @@ const WEEKDAYS = [
 const pad = (n: number, width = 2): string => String(Math.abs(n)).padStart(width, '0');
 
 /**
- * PURE. A moment in, its reading out. No clock is touched here, which is
- * what makes this testable and what makes `now()` the only line in the
- * tool that can surprise you.
+ * PURE. A moment in, its reading out. No clock is touched here.
  */
 export function readMoment(d: Date): Reading {
   if (Number.isNaN(d.getTime())) {
     throw new RangeError('the-now: invalid Date. A reading is never invented.');
   }
 
-  // getTimezoneOffset() is minutes BEHIND UTC — positive west. Inverted
-  // here so the sign matches how humans and ISO-8601 both write it.
+  // getTimezoneOffset() is minutes BEHIND UTC — inverted here to match ISO-8601.
   const offsetMinutes = -d.getTimezoneOffset();
   const sign = offsetMinutes < 0 ? '-' : '+';
   const offsetLabel = `${sign}${pad(Math.trunc(offsetMinutes / 60))}:${pad(offsetMinutes % 60)}`;
@@ -76,9 +51,7 @@ export function readMoment(d: Date): Reading {
   const date = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
   const time = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
 
-  // The zone NAME is a courtesy the runtime may not have. Absent is
-  // reported as null rather than filled in from the offset — two zones
-  // can share an offset, so inferring one would be a guess.
+  // Zone name is a runtime courtesy; absent is null, never inferred from the offset.
   let zone: string | null = null;
   try {
     zone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? null;

@@ -1,26 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// HOME — the log. Empty until she presses the button.
-	// ==========================================================================
-	//
-	// KP, 2026-08-18: "home should not have anything until a card is added by
-	// pressing a button (exactly like what echoes had)" and "it should literally
-	// be echoes, just rebranding and simplified."
-	//
-	// So this is resonance-echoes/src/routes/+page.svelte with the domain
-	// swapped: its empty state, its fixed FAB at the same offsets, its card list.
-	// A card here is a LOGGED MOMENT, exactly as a card there is a logged echo.
-	//
-	// SIMPLIFIED OUT: the search field, the sense chips, the emoji chips, the
-	// sort row, the filter status, and the count badge in the header. Echoes has
-	// eleven senses and hundreds of symbols to sift; sirens has ten circles.
-	//
-	// The ten circles themselves live in Settings, at KP's word — "what i see in
-	// the home screen now, should be in setting screen." Here they appear only
-	// inside the quick-add dialog the + opens, which is the press that makes a
-	// card. That dialog is shared with the calendar, so a moment is entered the
-	// same way in both rooms.
-
 	import { onMount } from 'svelte';
 	import { record } from '$lib/moments.svelte';
 	import MomentCard from '$lib/components/MomentCard.svelte';
@@ -63,8 +41,7 @@
 		</div>
 	{/if}
 
-	<!-- Echoes' FAB, at Echoes' own offsets so it clears the ComfortBar and the
-	     Android safe area exactly as it does there. -->
+	<!-- FAB offsets clear the ComfortBar and the Android safe area. -->
 	<button class="fab" onclick={() => (adding = true)} aria-label="quick add a moment">+</button>
 </div>
 
@@ -91,7 +68,7 @@
 	}
 
 
-	/* Echoes' empty state, word for word in shape. */
+	/* Empty state. */
 	.empty {
 		display: flex;
 		flex-direction: column;
@@ -143,7 +120,7 @@
 		border-color: var(--accent);
 	}
 
-	/* Echoes' quick-log FAB — same size, same corner, same reserve. */
+	/* Quick-log FAB. */
 	.fab {
 		position: fixed;
 		bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 0.75rem);

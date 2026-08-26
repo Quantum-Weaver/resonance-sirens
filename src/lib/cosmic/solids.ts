@@ -1,36 +1,4 @@
-// ============================================================================
-/* resonance-ziggy/modules/cosmic/constants/solids.ts */
-// QUANTUM SOLIDS SYSTEM — the house's dimensional vocabulary
-// Polyhedra as vertices and faces. Pure numbers: no colour, no rendering,
-// no DOM, no clock. A consumer projects them; this file only knows shape.
-// ============================================================================
-//
-// WHY THIS FILE EXISTS (2026-08-17, at KP's ⚛ word — "this will be the
-// house's first 3d experience", and "if more needs authored into our cosmic
-// system, that is fine, just not from within an app, at the source, as
-// additions"). The dice room in resonance-tarocchi is the first consumer.
-// It is not the only intended one: KP's own facet-object design at
-// well/geode/skapa.md:244 asks for exactly this — "a mind may envision
-// through a decahedron", "many shapes of dice" — and it is the geometry a
-// flattened net needs as much as a tumbling die does.
-//
-// THE LIMIT IS HIS, AND IT IS HONOURED RATHER THAN HIDDEN. KP, same page:
-// "the limit is only the mathmetical imposibility to produce a 'dice' of the
-// equal sided shape." True — only five solids are face-transitive, and a fair
-// die of arbitrary N cannot be built from them. So arbitrary N is built as a
-// BARREL, which is precisely how the physical world makes a d3, a d5 or a d7:
-// a prism whose numbered faces are its sides, capped so it cannot rest on an
-// end. The impossibility keeps its place; the shape is still delivered.
-//
-// DERIVED, NOT TRANSCRIBED. The dodecahedron is built from the icosahedron by
-// duality and the trapezohedron's apex is solved from its own planarity
-// condition — both verified numerically at module load — because a hand-typed
-// table of twenty pentagons is a typo waiting to be shipped to eighteen repos.
-// ============================================================================
-
-// ============================================================================
 // VECTORS — the smallest possible arithmetic
-// ============================================================================
 
 export type Vec3 = readonly [number, number, number];
 
@@ -68,9 +36,7 @@ export function vecNormalize(a: Vec3): Vec3 {
   return len === 0 ? a : vecScale(a, 1 / len);
 }
 
-// ============================================================================
 // SOLIDS — the shape itself
-// ============================================================================
 
 export interface Solid {
   /** The house name of the shape, not of the die. */
@@ -107,10 +73,8 @@ export function faceCentroid(solid: Solid, faceIndex: number): Vec3 {
 }
 
 /**
- * WINDING, MADE IMPOSSIBLE TO GET WRONG. Every solid below passes through
- * here: any face whose normal points back toward the centre is reversed. A
- * back-face cull is only as honest as its winding, and this removes the whole
- * class of error rather than asking each table to be typed correctly.
+ * Every solid below passes through here: any face whose normal points back
+ * toward the centre is reversed.
  */
 function ensureOutward(solid: Solid): Solid {
   solid.faces = solid.faces.map((face, i) => {
@@ -121,9 +85,7 @@ function ensureOutward(solid: Solid): Solid {
   return solid;
 }
 
-// ============================================================================
 // THE FIVE FAIR SOLIDS
-// ============================================================================
 
 function tetrahedron(): Solid {
   const v: Vec3[] = [
@@ -274,9 +236,7 @@ function dodecahedron(): Solid {
   });
 }
 
-// ============================================================================
 // THE TRAPEZOHEDRON — what a real d10 actually is
-// ============================================================================
 
 /**
  * A pentagonal trapezohedron: two apexes over a shallow ten-point zigzag of
@@ -328,16 +288,12 @@ export function trapezohedron(n = 5, band = 0.12): Solid {
   });
 }
 
-// ============================================================================
 // THE BARREL — KP's impossibility, answered the way a dice cutter answers it
-// ============================================================================
 
 /**
  * An N-sided prism with pyramidal caps: N numbered rectangles around the
  * waist, and two cones of triangles that make it impossible to rest on an end.
- * Not face-transitive, and `fair: false` says so out loud — but the SIDE faces
- * are congruent and equally likely, which is the property a die actually needs
- * and the reason real d3, d5 and d7 dice are made this way.
+ * Not face-transitive; `fair: false` says so.
  */
 export function barrel(n: number, waist = 0.62, point = 1.25): Solid {
   const sides = Math.max(3, Math.floor(n));
@@ -376,23 +332,12 @@ export function barrel(n: number, waist = 0.62, point = 1.25): Solid {
   });
 }
 
-// ============================================================================
 // THE DISC — the two-faced thing that is not a die
-// ============================================================================
 
 /**
- * A COIN. `solidForSides` refuses two on purpose — "a two-faced die is a coin,
- * and a coin is not a solid" — and this is the honest shape that refusal was
- * holding the door open for: a wide, thin n-gonal disc with a rim.
- *
- * Two faces carry a mark and the rim carries none, which is the truth about a
- * coin: it *can* land on its edge and essentially never does, so the rim is
- * built, lit and never numbered. `rim` is its one real knob — thin enough to
- * read as a coin, thick enough to catch the light as it turns edge-on, which
- * is the whole drama of a toss.
- *
- * `fair: true`, and unlike the barrel that is not a courtesy: the two flat
- * faces are congruent and opposite, so the shape is as fair as the throw.
+ * A COIN: a wide, thin n-gonal disc with a rim. `solidForSides` refuses two
+ * on purpose — a two-faced die is a coin, and a coin is not a solid. Two
+ * faces carry a mark and the rim carries none; `rim` is its one knob.
  */
 export function disc(rim = 0.11, segments = 32): Solid {
 	const n = Math.max(8, Math.floor(segments));
@@ -427,9 +372,7 @@ export function disc(rim = 0.11, segments = 32): Solid {
 	});
 }
 
-// ============================================================================
 // THE BAG — resolving a side count to a shape
-// ============================================================================
 
 export const PLATONIC_SOLIDS = {
   tetrahedron: tetrahedron(),
@@ -466,15 +409,11 @@ export function solidForSides(sides: number): Solid {
   return barrel(n);
 }
 
-// ============================================================================
 // SELF-CHECK — the derivations verify themselves at load, or they tell
-// ============================================================================
 
 /**
  * Every face of every fair solid must be planar and outward-wound. This runs
- * once, costs nothing, and returns the complaints rather than throwing: a
- * design system that breaks eighteen apps on import is worse than one that
- * says what is wrong. Consumers may call it; nothing is required to.
+ * once and returns the complaints rather than throwing.
  */
 export function verifySolids(epsilon = 1e-9): string[] {
   const complaints: string[] = [];

@@ -2,8 +2,7 @@
 	import { timerStore, prefersReducedMotion, type TimerMode, type ChimeId } from '$lib/stores/timer.svelte';
 	import TimerVisualization from '$lib/components/TimerVisualization.svelte';
 
-	// General-purpose presets (Compass's are sleep-lengths; Echoes is a
-	// day-companion — shorter spans serve rests, focus stretches, and tea).
+	// General-purpose presets — shorter spans serve rests, focus stretches, and tea.
 	const PRESETS = [5, 10, 15, 25, 45, 60];
 	const CHIME_OPTIONS: Array<{ id: ChimeId; label: string; icon: string }> = [
 		{ id: 'rise', label: 'Rise', icon: '🎐' },

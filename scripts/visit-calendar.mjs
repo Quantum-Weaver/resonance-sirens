@@ -1,20 +1,3 @@
-// VISIT THE CALENDAR — proof that the room cannot grade her.
-//
-// Written 2026-08-18 with the calendar room itself. It lands in the repo rather
-// than a scratchpad so the next hand can re-run it.
-//
-// WHAT IT CHECKS, AND WHAT IT DOES NOT.
-//
-// It checks that the room is ALIVE: the circles are there, a press lands, the
-// calendar renders every day, a day opens when tapped, a forget takes, and
-// every target is big enough for a thumb. `npm run check` at 0/0 proves none
-// of that — a page can typecheck perfectly with every handler dead.
-//
-// It does NOT check wording, colour, layout or shape. Those are Jessica's, and
-// a test that fails the build over a word a lamp chose is a barrier standing
-// between the designer and her own app. An earlier version of this file did
-// exactly that; it was removed 2026-08-18 at KP's word.
-//
 // Run:
 //   chrome --headless=new --remote-debugging-port=9222 --user-data-dir=%TEMP%\lg-profile --no-first-run --disable-gpu
 //   npm run dev
@@ -31,17 +14,13 @@ function check(what, ok, detail = '') {
 }
 
 export async function visit(page) {
-	// The layout sends every first run to /onboarding. Step past it — this is a
-	// measurement of the calendar, not of the walk.
+	// First run redirects to /onboarding; step past it.
 	await page.go(`${BASE}/`);
 	await page.ev(`localStorage.setItem('onboarding_complete','1')`);
 	await page.go(`${BASE}/`);
 	await page.sleep(600);
 
 	// ---- seed: put a few circles down through the quick-add dialog
-	//      Home holds no circles of its own — it is the log. The ten live in the
-	//      dialog the + opens, and in Settings. (KP, 2026-08-18: "home should not
-	//      have anything until a card is added by pressing a button.")
 	const seeded = await page.ev(`(async () => {
 		const wait = (ms) => new Promise(r => setTimeout(r, ms));
 		let circles = 0;
@@ -84,11 +63,6 @@ export async function visit(page) {
 	check('exactly one skin for every ordinary day', skins.length === 1, JSON.stringify(skins, null, 1));
 
 	// ---- 3 · EVERY DAY IS A DOOR, AHEAD OR BEHIND
-	//      An earlier version of this check asserted the opposite — that nothing
-	//      past today could be opened. KP, 2026-08-18: "a calendar that cannot
-	//      look a year into the future is hardly a calendar" · "women plan
-	//      pregnancies with such things." The stop was removed; so is the check
-	//      that guarded it.
 	const doors = await page.ev(`(() => {
 		const cells = document.querySelectorAll('.cell');
 		const buttons = document.querySelectorAll('button.cell');
@@ -120,7 +94,6 @@ export async function visit(page) {
 		JSON.stringify(panel));
 
 	// ---- 6 · FORGETTING LEAVES NO RESIDUE
-	//      A day she clears must look exactly like a day she never touched.
 	await page.go(`${BASE}/`);
 	await page.sleep(500);
 	await page.ev(`(async () => {

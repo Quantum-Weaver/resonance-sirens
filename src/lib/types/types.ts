@@ -7,9 +7,8 @@ export interface ThemeConfig {
   presetName?: string;
   fontSize: 'small' | 'medium' | 'large';
   /** How far the accent bleeds into the background. The reader's choice, not
-   *  the app's - added 2026-08-21 at KP's word, "which i like, but others may
-   *  not." A config saved before this field existed is merged over the default
-   *  and reads as 'subtle', which is what its owner was already seeing. */
+   *  the app's. A config saved before this field existed is merged over the
+   *  default and reads as 'subtle'. */
   tint: TintLevel;
 }
 
@@ -41,10 +40,3 @@ export interface Subcategory {
   name: string;
   description: string;
 }
-
-// DELIBERATE DIVERGENCE FROM THE FAMILY, 2026-08-18. Echoes, gaia and awen
-// re-export `EmojiDef` from `$lib/data/emojis` here — a sensory lexicon of
-// several hundred symbols. Sirens has no lexicon and never will: its entire
-// vocabulary is the ten circles in `$lib/circles.ts`, and an emoji dataset is
-// the exact thing this app was rebuilt to remove. The data file is not copied,
-// so the re-export is dropped with it. Nothing else in this file changes.

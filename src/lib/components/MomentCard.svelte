@@ -1,21 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// A MOMENT — one card in the list, the way an echo is one card in Echoes
-	// ==========================================================================
-	//
-	// KP, 2026-08-18: "it should literally be echoes, just rebranding and
-	// simplified." So this is Echoes' `.echo-card` with Echoes' own measurements
-	// — the 2rem glyph, the name/time row, the sky line, the note — carrying a
-	// moment instead of an echo.
-	//
-	// Simplified out of it: the sense badge, the subcategory, and the five
-	// intensity dots. A circle has no category and nothing here rates anything.
-	//
-	// It expands in place instead of navigating to /add?edit= like Echoes does,
-	// which is the one shape KP asked for by name: "entity cards in the hearth
-	// that click to expand with a single emoji to press that opens the logging
-	// details boxes if any are needed."
-
 	import { goto } from '$app/navigation';
 	import { dayKey } from '$lib/days';
 	import { record } from '$lib/moments.svelte';
@@ -35,8 +18,7 @@
 	const word = $derived(record.wordFor(moment.emoji));
 	const temp = $derived(bothUnits(moment.tempC));
 
-	/** Echoes derives the sky from the entry's own timestamp and stores nothing
-	 *  (its `skyLine`, +page.svelte:144). Same here. */
+	/** Derived from the entry's own timestamp and stored nowhere. */
 	const sky = $derived.by(() => {
 		if (!prefs.sky) return null;
 		const m = moonPhase(new Date(moment.at));

@@ -1,26 +1,3 @@
-// the-envelope — the sovereignty trio as one library.
-//
-// RE-HOMED (never extracted) from resonance-echoes settings (the envelope
-// law, B4–B6, "this shape is the family's to inherit") with Compass's
-// second implementation read beside it, 2026-07-30, per KP's law: "the
-// rehoming should not mean extracting" — both apps keep their organs
-// untouched. This library carries the LAW, framework-free, so every app
-// in the family can reference one truth instead of re-deriving it.
-//
-// The three laws, carried verbatim from the origins' own comments:
-//  1. EXPORT: one versioned envelope, schema-versioned, app-namespaced —
-//     "the counts are written on the envelope so a vessel can see at a
-//     glance that the file carries what the app shows."
-//  2. PURGE: "the export must be complete IN HAND before anything
-//     deletes — export-then-purge may never destroy the remainder." And
-//     purge clears everything, never a curated list — "future keys must
-//     not survive a purge by omission."
-//  3. IMPORT: non-destructive by law — "an existing definition is the
-//     vessel's current mind and is never overwritten by an older file."
-//     Legacy bare exports stay honored: "a vessel's old backup must
-//     never be told it's worthless." Wrong-app envelopes are refused
-//     plainly.
-
 export const ENVELOPE = 'resonance-export';
 export const ENVELOPE_VERSION = 1;
 
@@ -71,8 +48,7 @@ export function open<TData extends Record<string, unknown>>(
   expectedApp: string
 ): Reading<TData> {
   if (Array.isArray(parsed)) {
-    // Legacy bare-array export (pre-envelope) — still honored:
-    // a vessel's old backup must never be told it's worthless.
+    // Legacy bare-array export (pre-envelope) — still honored.
     return { kind: 'legacy', raw: parsed };
   }
   const p = parsed as Partial<Envelope<TData>> | null;
@@ -119,8 +95,7 @@ export function mergeNonDestructive<V>(
 /**
  * Law 2 — purge that awaits the export: the export must be complete IN
  * HAND before anything deletes. Runs the purge steps in order; any
- * failure stops the run so the caller can say what failed — a silent
- * purge rejection looks like 'purge never purges'.
+ * failure stops the run so the caller can say what failed.
  */
 export async function purgeAfter(
   exportFn: (() => Promise<void>) | null,

@@ -1,22 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// A DAY - one square, and it looks the same however full it is
-	// ==========================================================================
-	//
-	// WHAT THIS FILE EXISTS TO HOLD: presence is never painted. Background,
-	// border, opacity and box-shadow on a day she put four circles on and a day
-	// she put none on are byte-identical. Nothing here branches a class or a
-	// style on how many moments arrived, and there is no `:has()` doing the same
-	// thing quietly instead. The only two variants are `today`, which is a fact
-	// of the clock, and `open`, which is where her thumb is right now.
-	//
-	// AND NO DOT FOR A DAY SHE PUT NOTHING ON. In a field of seventy squares a
-	// faint dot on each one reads as a trail of here, and here, and here you did
-	// not - the app grading her with punctuation. The moon holds the square's
-	// shape instead, and the moon is over every woman's day alike.
-	//
-	// A day that has not happened is a <div> rather than a <button> and is drawn
-	// identically: no greying, nothing switched off, no sentence about it.
 
 	import type { Day } from '$lib/days';
 	import type { Moment } from '$lib/record';
@@ -36,16 +18,13 @@
 		ontap?: (key: string) => void;
 	} = $props();
 
-	/** Three, and then this. Never a figure - a figure is the app telling her
-	 *  how much of a day she had. */
+	/** Three, and then this — never a figure. */
 	const MORE = '\u22EF';
 
 	const shown = $derived(moments.slice(0, 3));
 	const overflowing = $derived(moments.length > 3);
 
-	/** The glyphs shrink so three fit a 44px square. It rides as an INLINE
-	 *  CUSTOM PROPERTY on purpose: a class name keyed on how many there are is
-	 *  presence, painted, one stylesheet rule away from becoming a border. */
+	/** The glyphs shrink so three fit a 44px square; it rides as an inline custom property. */
 	const mark = $derived(shown.length > 2 ? '0.72rem' : shown.length > 1 ? '0.86rem' : '1rem');
 </script>
 
@@ -68,9 +47,7 @@
 </button>
 
 <style>
-	/* ONE SHAPE. Every property that could betray presence is declared here and
-	   nowhere else, so there is no second place for one to appear later. The
-	   button and the div carry the same class and resolve to the same styles. */
+	/* ONE SHAPE: every property that could betray presence is declared here and nowhere else. */
 	.cell {
 		position: relative;
 		display: block;
@@ -100,8 +77,7 @@
 		outline-offset: 2px;
 	}
 
-	/* Today. A fact of the clock, and never colour alone - the date number
-	   carries the weight too, so it survives a greyscale screen. */
+	/* Today — never colour alone; the date number carries the weight too. */
 	.cell.today {
 		border-color: var(--accent);
 	}
@@ -110,7 +86,7 @@
 		font-weight: 700;
 	}
 
-	/* Open. Where her thumb is - Echoes' own selected-cell treatment. */
+	/* Open — where her thumb is. */
 	.cell.open {
 		border-color: var(--accent);
 		background: color-mix(in srgb, var(--accent) 10%, transparent);

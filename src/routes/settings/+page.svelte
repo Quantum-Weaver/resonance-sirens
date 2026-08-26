@@ -1,25 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// SETTINGS — the few switches, and nothing that grades her
-	// ==========================================================================
-	//
-	// THE LAYOUT IS ECHOES' — at KP's word, 2026-08-23: "make its settings screen
-	// match the layout our envelope has in echoes so it better resembles our
-	// apps settings layout." The shape is the mother's, section for section
-	// (header · THEME · … · DATA SOVEREIGNTY · ABOUT), the styles carried from
-	// `resonance-echoes/src/routes/settings/+page.svelte` so the room reads as
-	// one family; Sirens' own rooms (the circles, the sky) sit between in the
-	// same shape, and the WORDS stay Sirens' — her app, her register.
-	//
-	// WHAT ECHOES HAS THAT THIS ROOM REFUSES, on this app's own law: a count.
-	// Echoes opens Data Sovereignty with "N echoes stored"; `record.ts` carries
-	// no count function and the door forbids one (docs/CHECKLIST.md, Phase 1),
-	// so that line is a sentence here and no button is gated on a number.
-	//
-	// The sky switch ("toggle on or off in settings as some may not be
-	// interested" — KP, 2026-08-18) and the circles' words are hers; export,
-	// import and purge ride the-envelope (resonance-awen/tools/the-envelope —
-	// "use it; do not re-author it") and are never hand-rolled.
 
 	import { onMount } from 'svelte';
 	import { themeStore, SIRENS_THEMES } from '$lib/stores/theme.svelte';
@@ -34,13 +13,9 @@
 	const APP = 'resonance-sirens';
 	const SANCTUARY_URL = 'https://audhdities.com';
 
-	// ── Theme ─────────────────────────────────────────────────────────────────
-	// Every preset the shelf holds, Rose leading — derived in the store, never
-	// listed here, so a preset born on the shelf appears on this wall the same
-	// day (Rainbow and Progress Pride arrived this way, 2026-08-23).
+	// Theme
 
-	/** Matched on the stored presetName, not the accent — Dark and AMOLED share
-	 *  an accent colour (Echoes' own note at settings/+page.svelte). */
+	/** Matched on the stored presetName, not the accent — Dark and AMOLED share an accent colour. */
 	const activePreset = $derived(
 		SIRENS_THEMES.find((t) => t.presetName === themeStore.config.presetName)?.key ?? 'rose'
 	);
@@ -61,15 +36,14 @@
 		{ key: 'large' as const, label: 'Large' }
 	];
 
-	// ── Data Sovereignty ──────────────────────────────────────────────────────
+	// Data Sovereignty
 
 	let appVersion = $state('');
 	let importInput = $state<HTMLInputElement | null>(null);
 	let importReport = $state<string | null>(null);
 	let importError = $state<string | null>(null);
 
-	// purgeState runs the double confirmation for both purge paths — the
-	// mother's flow, kept whole: a purge is never one tap.
+	// purgeState runs the double confirmation for both purge paths — a purge is never one tap.
 	let purgeState = $state<'idle' | 'confirm1' | 'confirm2'>('idle');
 	let pendingExport = $state(false);
 	let purgeError = $state<string | null>(null);
@@ -77,8 +51,7 @@
 
 	type Carried = { moments: Moment[]; words: Record<string, string> };
 
-	/** Straight from the record, never the loaded page — the envelope's own
-	 *  first law, and Echoes' E1. */
+	/** Straight from the record, never the loaded page. */
 	async function exportData() {
 		const { moments, words } = await record.everything();
 		const payload = seal<Carried>(
@@ -111,9 +84,7 @@
 			const ms = Array.isArray(reading.data.moments) ? reading.data.moments : [];
 			const ws = reading.data.words ?? {};
 			const r = await record.restore(ms, ws);
-			// Non-destructive, like the mother's: what is already here stays as
-			// it is, and a word she has given a circle is never overwritten by an
-			// older file.
+			// Non-destructive: what is already here stays, and a word she has given a circle is never overwritten by an older file.
 			importReport =
 				[
 					`${r.added} ${r.added === 1 ? 'moment' : 'moments'} back`,
@@ -140,19 +111,14 @@
 	}
 
 	/** The export must be complete IN HAND before anything deletes — the
-	 *  envelope's `purgeAfter`, not a hand-rolled sequence. Then, as the mother
-	 *  does: everything in localStorage goes too (the theme, the sky switch,
-	 *  the name she gave at the door, the door's own flag) — future keys must
-	 *  not survive a purge by omission — and the app reloads to its first
-	 *  screen. The purge truly purges. */
+	 *  envelope's `purgeAfter`, not a hand-rolled sequence. Everything in
+	 *  localStorage goes too, so no future key survives a purge by omission. */
 	async function executePurge() {
 		purgeError = null;
 		try {
 			await purgeAfter(pendingExport ? exportData : null, () => record.purgeAll());
 			localStorage.clear();
 		} catch (err) {
-			// Stay on the confirm step and say what failed — a silent purge
-			// rejection looks like "purge never purges."
 			purgeError = err instanceof Error ? err.message : String(err);
 			return;
 		}
@@ -187,9 +153,7 @@
 		<h1 class="settings-title">Settings</h1>
 	</header>
 
-	<!-- ── Section 1: Theme ── (first, as in every app cut from Echoes — KP,
-	     2026-08-18: "place it at the top to keep the setting layouts the same
-	     across family apps.") -->
+	<!-- Section 1: Theme -->
 	<section class="section">
 		<h2 class="section-title">Theme</h2>
 
@@ -249,7 +213,7 @@
 		</div>
 	</section>
 
-	<!-- ── Section 2: Your circles ── (Sirens' own room, in the family's shape) -->
+	<!-- Section 2: Your circles -->
 	<section class="section">
 		<h2 class="section-title">Your circles</h2>
 		<p class="say">
@@ -263,7 +227,7 @@
 		</div>
 	</section>
 
-	<!-- ── Section 3: The sky ── (Sirens' own switch) -->
+	<!-- Section 3: The sky -->
 	<section class="section">
 		<h2 class="section-title">The sky</h2>
 		<p class="say">
@@ -281,11 +245,10 @@
 		</button>
 	</section>
 
-	<!-- ── Section 4: Data Sovereignty ── (the envelope's room, Echoes' shape) -->
+	<!-- Section 4: Data Sovereignty -->
 	<section class="section">
 		<h2 class="section-title">Data Sovereignty</h2>
 
-		<!-- Where Echoes counts, Sirens says. No number lives in this room. -->
 		<p class="data-line">
 			It is yours to carry and yours to destroy. The file holds every moment
 			and every word you gave a circle, and it goes nowhere but where you put
@@ -377,7 +340,7 @@
 		</div>
 	</section>
 
-	<!-- ── Section 5: About ── -->
+	<!-- Section 5: About -->
 	<section class="section">
 		<h2 class="section-title">About</h2>
 
@@ -397,10 +360,6 @@
 </div>
 
 <style>
-	/* Carried from Echoes' settings page, 2026-08-23, so the two rooms read as
-	   one family — same header, same section rhythm, same cards and pills, the
-	   same Data Sovereignty shape. Sirens' two own rooms (.say · .switch ·
-	   .circles) wear the same measures. */
 	.settings {
 		min-height: 100%;
 	}
@@ -435,7 +394,7 @@
 		margin: 0;
 	}
 
-	/* ── Theme ── */
+	/* Theme */
 	.theme-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -470,8 +429,7 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.75rem;
-		/* Label + three pill buttons exceed 320px — wrap instead of clipping
-		   (flex text children won't shrink below their content). */
+		/* Label + three pill buttons exceed 320px — wrap instead of clipping. */
 		flex-wrap: wrap;
 	}
 	.font-label {
@@ -499,7 +457,7 @@
 		background: color-mix(in srgb, var(--accent) 12%, transparent);
 	}
 
-	/* ── Sirens' own rooms, in the family's measures ── */
+	/* Sirens' own rooms, in the family's measures */
 	.say {
 		margin: 0;
 		font-size: 0.875rem;
@@ -538,7 +496,7 @@
 		border-color: var(--accent);
 	}
 
-	/* ── Data Sovereignty ── */
+	/* Data Sovereignty */
 	.data-line {
 		font-size: 0.875rem;
 		color: var(--text-muted);
@@ -690,7 +648,7 @@
 		justify-content: flex-end;
 	}
 
-	/* ── Uninstall Guide ── */
+	/* Uninstall Guide */
 	.uninstall-section {
 		padding-top: 0.75rem;
 		border-top: 1px solid var(--border-color);
@@ -734,7 +692,7 @@
 		line-height: 1.5;
 	}
 
-	/* ── About ── */
+	/* About */
 	.about-card {
 		background: var(--bg-surface);
 		border: 1px solid var(--border-color);

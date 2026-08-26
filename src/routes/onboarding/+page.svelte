@@ -18,30 +18,12 @@
 		type Walk
 	} from '$lib/epagoge';
 
-	// The wordmark law, learned from Bubbles: the title reads the app's OWN
-	// name (productName in tauri.conf.json is the single truth), so a rename
-	// never gets chased into the chrome. Outside Tauri the fallback stands.
+	// The title reads productName from tauri.conf.json; this is the non-Tauri fallback.
 	let appName = $state('Sirens');
 	getName()
 		.then((n) => { appName = n.replace(/^Resonance\s+/i, ''); })
 		.catch(() => {});
 
-	// THE WALK — this door consumes the-epagoge (the spring's leading-in;
-	// Compass its first consumer, Bubbles the road-prover). The app brings
-	// the particulars into the walk's slots; the walk owns the flow, the
-	// dots, the honest record. ALL presets are offered at the door —
-	// derived from the shelf itself, never hardcoded, so a new preset
-	// appears here the day it is born (KP's word: "it adds the other
-	// available styles choices").
-	// THE DOOR OFFERS EVERY PRESET BUT AMOLED. Rose is this app's own and leads;
-	// AMOLED sits out of the walk and stays available in Settings (KP,
-	// 2026-08-18: "swap out one and use rose in the onboarding, but keep all 7
-	// choices in the settings" — his one standing word on the door's roster).
-	// The list is the store's, derived from the shelf, so RAINBOW and PROGRESS
-	// PRIDE stand at the door from 2026-08-23 without a line written for them
-	// (KP, 2026-08-22: "include a rainbow and inclusive pride themes in our
-	// settings as well in our epagoge onboarding walk"), each wearing its
-	// stripes as its swatch.
 	const themeOffers = SIRENS_THEMES.filter((t) => t.key !== 'amoled').map((t) => ({
 		key: t.key,
 		name: t.name,
@@ -83,9 +65,6 @@
 		if (isDone(walk)) finish();
 	}
 
-	// THE DOORWAY LAW: completion hands over what was given and what was
-	// not; the app stores it under its own roof, and every answer stays
-	// changeable in Settings.
 	function finish() {
 		const done = completion(walk);
 		const name = done.entries['welcome'];
@@ -99,8 +78,6 @@
 <div class="onboarding" style="padding-top: env(safe-area-inset-top, 0px);">
 
 	{#if beginTrouble}
-		<!-- Trouble is data, told never thrown — and it should never stand here:
-		     the steps are static. Honest anyway. -->
 		<div class="screen"><div class="screen-body"><p class="ob-sub">{beginTrouble}</p></div></div>
 	{:else if step?.id === 'welcome'}
 		<!-- Step 1: Welcome — the entry -->
@@ -223,7 +200,6 @@
 					{/each}
 				</div>
 
-				<!-- The doorway line — the leading-in never locks a door. -->
 				<p class="name-hint">You can change this anytime in Settings.</p>
 			</div>
 
@@ -275,7 +251,7 @@
 		gap: 1.75rem;
 	}
 
-	/* ── Step 1: Welcome ── */
+	/* Step 1: Welcome */
 	.sigil-wrap {
 		display: flex;
 		justify-content: center;
@@ -345,7 +321,7 @@
 		margin: 0;
 	}
 
-	/* ── Step 2: How it works ── */
+	/* Step 2: How it works */
 	.how-cards {
 		display: flex;
 		flex-direction: column;
@@ -385,7 +361,7 @@
 		line-height: 1.5;
 	}
 
-	/* ── Step 3: Theme — six cards, 2 columns on a phone, 3 on wider land ── */
+	/* Step 3: Theme — six cards, 2 columns on a phone, 3 on wider land */
 	.theme-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -425,7 +401,7 @@
 		border-radius: 3px;
 	}
 
-	/* ── Actions ── */
+	/* Actions */
 	.screen-actions {
 		display: flex;
 		flex-direction: column;
@@ -459,7 +435,7 @@
 	}
 	.btn-skip:hover { color: var(--text-secondary); }
 
-	/* ── Progress dots — derived by the walk, drawn by the app ── */
+	/* Progress dots — derived by the walk, drawn by the app */
 	.progress {
 		display: flex;
 		justify-content: center;

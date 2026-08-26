@@ -1,14 +1,4 @@
-// ============================================================================
-// PREFERENCES — the few things kept about her that are not moments
-// ============================================================================
-//
-// localStorage, not the database. A preference is a display choice; it is not
-// a record, it never appears in an export as a claim about her, and losing it
-// costs nothing but a tap.
-//
-// KP's word, 2026-08-18, on why the sky is a switch and not a fixture:
-// "to attach more understanding to a moment captured. and toggle on or off in
-// settings as some may not be interested."
+// Preferences live in localStorage, not the database: display choices, never records.
 
 const SKY_KEY = 'resonance-sirens-sky';
 
@@ -32,9 +22,7 @@ function write(key: string, on: boolean): void {
 let sky = $state(true);
 
 export const prefs = {
-	/** Whether the sky is shown at all — on a day cell, beside a moment, in the
-	 *  calendar's head. ONE SWITCH, ONE IDEA: some will not be interested, and
-	 *  that is a whole reason. */
+	/** Whether the sky is shown at all — on a day cell, beside a moment, in the calendar's head. */
 	get sky() {
 		return sky;
 	},

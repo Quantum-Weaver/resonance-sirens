@@ -31,23 +31,14 @@
 
 	const greeting = $derived(`${getGreeting()}, ${vesselName}`);
 
-	// THE COUNT DOES NOT COME ACROSS. Echoes' bar reads `echoStore.totalCount`
-	// and says "N echoes gathered so far" — a tally, and a different one at zero.
-	// Both are forbidden here: record.ts has no count function by design, and a
-	// line that changes when she has recorded nothing is a line that comments on
-	// her having recorded nothing.
-	//
-	// So this says the same sentence forever. It is the app's promise, not a
-	// statistic, and it reads identically on her first day and her four
-	// hundredth.
+	// THE COUNT DOES NOT COME ACROSS: record.ts has no count function, and this line never changes.
 	const statsLine = 'Nothing here is counted, and nothing leaves this device.';
 
 	onMount(() => {
 		vesselName = localStorage.getItem('resonance-sirens-vessel-name') ?? 'there';
 	});
 
-	// Home IS the capture surface here — ten circles, one press — so there is no
-	// separate add room to shortcut to. The bar carries her back to the circles.
+	// Home IS the capture surface here — there is no separate add room to shortcut to.
 	function onQuickAdd() {
 		goto('/');
 	}
@@ -71,10 +62,7 @@
 		</div>
 	{:else}
 		<div class="comfort-bar__minimized">
-			<!-- The navigation toggle. It lives in the bar rather than floating above
-			     it: the family's remedy (Echoes, 2026-08-21; carried here 2026-08-22)
-			     for a floating button that buried what it floated over. Inside the
-			     bar it shares the bar's own layer and can cover nothing. -->
+			<!-- The navigation toggle lives in the bar rather than floating above it, so it can cover nothing. -->
 			<button
 				class="comfort-bar__nav"
 				onclick={() => uiStore.toggleNav()}
@@ -103,9 +91,7 @@
 		border-top: 1px solid var(--border-color);
 		padding-bottom: env(safe-area-inset-bottom, 0px);
 		transition: background-color 0.2s ease;
-		/* Own compositor layer: large relayouts elsewhere could leave a stale
-		   painted copy of this fixed bar in the Android WebView (the "ghost
-		   bar" artifact seen in Compass before the same fix). */
+		/* Own compositor layer — without it the fixed bar can leave a stale painted copy ("ghost bar") in the Android WebView. */
 		transform: translateZ(0);
 	}
 
@@ -141,8 +127,7 @@
 	}
 
 	.comfort-bar__greeting-btn {
-		/* Takes the slack so the nav button and the + keep their corners, and
-		   a long greeting truncates instead of shoving them. */
+		/* Takes the slack so a long greeting truncates instead of shoving the buttons. */
 		flex: 1;
 		min-width: 0;
 		overflow: hidden;

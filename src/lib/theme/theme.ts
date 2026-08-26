@@ -1,36 +1,8 @@
-// ============================================================================
 // theme.ts — THE ORIGIN. Edit here and nowhere else.
-// ============================================================================
 // ⚠ If you are reading this anywhere but resonance-awen/standalone/theme/, you
 // are reading a MIRROR and your edit will be overwritten by the next shelf run.
 // The source of truth lives at resonance-awen/standalone/theme/theme.ts;
 // refresh mechanism: `npm run shelves` in resonance-gaia.
-//
-// (The mirror header law, from resonance-standards/docs/DOC-CLASSES.md: "Every
-// MIRROR-class artifact declares itself at the top... A mirror that cannot name
-// its truth is not a mirror; it is drift waiting to be discovered.")
-//
-// The realm's preset themes. It imports only from `$lib/types` and `$lib/cosmic`
-// — both of which every family-stack realm already has — so it stands alone in
-// the shelf's sense: droppable into any realm wearing the stack, and nothing
-// else needed.
-//
-// Joined the shelf 2026-08-13 at KP's ⚛ word — "theme should join the shelf."
-// Measured before the move: byte-identical in awen · gaia · weaver · standards
-// (sha256 871afd9a03f7), and naming no origin at all. Four faithful copies with
-// nothing to point at; this header is what they were missing.
-//
-// Revised at the origin 2026-08-22 (the Echoes fix of 2026-08-21 carried home
-// at KP's word): a preset is a COLOUR IDENTITY — no `mode`, no `fontSize` —
-// so choosing one no longer cancels Light mode or resets the text size;
-// DEFAULT_THEME and the TINT_LEVELS dial (the accent carried into the
-// background) join it. A consumer's own `$lib/types` must export `TintLevel`
-// and carry `tint` on ThemeConfig — the Echoes shape, byte for byte.
-// Same day, at KP's word: ROSE (Sirens' rose, cosmic `sirens.rose`), RAINBOW
-// and PROGRESS PRIDE join the presets — with `icon`, `stripes` and
-// `presetSwatch()` beside them, so Settings and the epagoge walk offer them
-// everywhere the presets are derived from this table.
-// ============================================================================
 
 import type { ThemeConfig, TintLevel } from '$lib/types/types';
 import { QUANTUM_COLORS } from '$lib/cosmic';
@@ -41,12 +13,6 @@ import { QUANTUM_COLORS } from '$lib/cosmic';
  * It deliberately carries no `fontSize` and no `mode`: those are the reader's
  * own axes, chosen separately in Settings, and a colour choice has no business
  * resetting them. `mode` appears here only on AMOLED, whose identity IS a mode.
- *
- * Before 2026-08-21 every preset carried `mode: 'dark'` and `fontSize:
- * 'medium'`, and `setPreset` replaced the config wholesale - so choosing any
- * theme card silently cancelled Light mode and dropped Large text back to
- * Medium. KP: "every button appears to cancel light mode... always switches to
- * dark."
  */
 export interface ThemePreset {
   accentColor: string;
@@ -59,9 +25,7 @@ export interface ThemePreset {
    * swatch (see `presetSwatch`). `accentColor` stays ONE colour - the stripe
    * the UI leans on wherever a single colour is needed (borders, focus rings,
    * the wordmark, the background tint) - because `--accent` is consumed as a
-   * plain colour across the family. Added 2026-08-22 at KP's word: "include a
-   * rainbow and inclusive pride themes in our settings as well in our epagoge
-   * onboarding walk."
+   * plain colour across the family.
    */
   stripes?: readonly string[];
 }
@@ -78,13 +42,8 @@ export const PRESET_THEMES: Record<string, ThemePreset> = {
     icon: '⚫',
     mode: 'amoled',
   },
-  // Sirens' founding rose - "an app someone opens on a hard day" - brought into
-  // cosmic as `sirens.rose` 2026-08-22 at KP's word, and offered to every realm.
   rose: { accentColor: QUANTUM_COLORS['sirens.rose'], presetName: 'Rose', icon: '🌹' },
   // THE PRIDE FLAGS - cosmic's own pride.* tokens, in each flag's own order.
-  // Rainbow leans on the hot pink that was the FIRST stripe of the first flag
-  // (1978) and reads on both grounds; Progress Pride leans on the trans pink
-  // the house already wears for Pride (Lantern, TJDPoetry's palette).
   rainbow: {
     accentColor: QUANTUM_COLORS['pride.pink'],
     presetName: 'Rainbow',
@@ -144,11 +103,6 @@ export const DEFAULT_THEME: ThemeConfig = {
 /**
  * How much of the accent bleeds into the neutral grounds.
  *
- * Raised 2026-08-21 at KP's word: a theme change should carry the BACKGROUND,
- * not only the borders and buttons. Before this, every dark preset returned the
- * same `deepSpace`, so Dark, Warm, Ocean, Forest and Sunset differed by accent
- * alone and the field behind them never moved.
- *
  * The reader picks the level in Settings - `off` restores the previous
  * behaviour exactly. These numbers are the whole dial; tune them here and
  * nowhere else.
@@ -198,17 +152,13 @@ export const getThemeColors = (config: ThemeConfig) => {
   const accent = config.accentColor;
   const tint = TINT_LEVELS[config.tint] ?? TINT_LEVELS.subtle;
 
-  // Deliberate non-token neutrals: AMOLED true-black and light-mode grays
-  // have no cosmic tokens by design (the system is dark-first); these are
-  // theme-mode physics, not drift. Declared at the 2026-07-19 cleanup.
+  // Deliberate non-token neutrals: AMOLED true-black and light-mode grays have no cosmic tokens.
   const groundBg = isAmoled ? '#000000' : isLight ? '#f5f5f5' : QUANTUM_COLORS['deepSpace'];
   const groundSurface = isAmoled ? '#0a0a0a' : isLight ? '#ffffff' : QUANTUM_COLORS['surface'];
   const groundSurfaceLight = isAmoled ? '#111111' : isLight ? '#e8e8e8' : '#2a2a5a';
 
   return {
-    // AMOLED keeps a true-black FIELD - pixels off is the whole promise of the
-    // mode - but its raised surfaces still take the accent, so a themed AMOLED
-    // still reads as themed without spending the black.
+    // AMOLED keeps a true-black field; its raised surfaces still take the accent.
     background: isAmoled ? groundBg : blend(groundBg, accent, tint.background),
     surface: blend(groundSurface, accent, tint.surface),
     surfaceLight: blend(groundSurfaceLight, accent, tint.surfaceLight),

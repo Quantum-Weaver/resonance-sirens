@@ -1,18 +1,4 @@
-// ============================================================================
-// THE LIVING RECORD — one copy of her moments, shared by every room
-// ============================================================================
-//
-// record.ts owns the writing; this owns the reading, so the cards and the
-// calendar see the same list the instant a press lands, with no reload and no
-// second query.
-//
-// IT ADDS NO STORAGE AND NO DERIVED RECORD. Everything here is either a
-// passthrough to record.ts or a read-time derivation held in memory for a
-// session. There is no count, no streak, no since(), no missed().
-//
-// AND IT MUST BE `.svelte.ts`. Runes compile only in `.svelte` and `.svelte.ts`
-// files; in a plain `.ts` a `$state` typechecks clean and is undefined at
-// runtime. Nemeton bought that lesson on 2026-08-18.
+// MUST be `.svelte.ts` — runes compile only in `.svelte`/`.svelte.ts`; in a plain `.ts` a `$state` typechecks clean and is undefined at runtime.
 
 import {
 	all,
@@ -39,8 +25,7 @@ export const record = {
 		return loaded;
 	},
 
-	/** Her word for a circle, or null. THE APP NEVER READS THIS FOR MEANING —
-	 *  nothing branches on it, nothing groups by it, nothing infers from it. */
+	/** Her word for a circle, or null. THE APP NEVER READS THIS FOR MEANING. */
 	wordFor(glyph: string): string | null {
 		return words[glyph] ?? null;
 	},
@@ -52,8 +37,7 @@ export const record = {
 		loaded = true;
 	},
 
-	/** One press. `capture()` takes `at` inside itself, so the time recorded is
-	 *  the time she pressed and not the time a save finished. */
+	/** One press. `capture()` records `at` at press time, not at save time. */
 	async press(glyph: string, tempC: number | null = null, note: string | null = null) {
 		const m = await capture(glyph, tempC, note);
 		moments = [m, ...moments];
@@ -78,8 +62,7 @@ export const record = {
 		moments = moments.map((m) => (m.id === id ? { ...m, tempC, note } : m));
 	},
 
-	/** Undo for a thumb. A mis-tap is the most common real event in this app's
-	 *  life, and the undo belongs exactly where the mis-tap landed. */
+	/** Undo for a thumb. */
 	async drop(id: string) {
 		await forget(id);
 		moments = moments.filter((m) => m.id !== id);
@@ -93,8 +76,7 @@ export const record = {
 		words = next;
 	},
 
-	/** Everything she has, for the envelope — straight from the record, never
-	 *  the loaded page (Echoes' E1). */
+	/** Everything she has, for the envelope — straight from the record, never the loaded page. */
 	async everything(): Promise<{ moments: Moment[]; words: Record<string, string> }> {
 		const [ms, ws] = await Promise.all([all(), readMarks()]);
 		return { moments: ms, words: ws };
@@ -128,11 +110,7 @@ export const record = {
 		await this.load();
 	},
 
-	/** The most recent press of this circle TODAY, or null.
-	 *
-	 *  Not a count, not a streak, not a since(). It answers the one question a
-	 *  woman actually asks a tracker — "did I already?" — and it clears itself
-	 *  at midnight without a word about yesterday. */
+	/** The most recent press of this circle TODAY, or null. */
 	lastToday(glyph: string): string | null {
 		const today = new Date().toDateString();
 		for (const m of moments) {

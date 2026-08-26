@@ -1,19 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// THE LOGGING DETAIL BOXES — "if any are needed"
-	// ==========================================================================
-	//
-	// KP, 2026-08-18: "a single emoji to press that opens the logging details
-	// boxes if any are needed." That last clause is the design. The moment is
-	// already kept before these are ever seen, so closing loses nothing, no
-	// field is required, no form gates a save, and nothing here is validated,
-	// refused, or called out of range.
-	//
-	// Inline, in flow, inside the caller's {#if}. There is no sheet and no modal
-	// anywhere in this app; nothing traps.
-	//
-	// NOTHING AUTOFOCUSES. A keyboard leaping up on a hard day is a cost, and
-	// there is no field here worth paying it for.
 
 	import { toC, fromC, readUnit, writeUnit, type Unit } from '$lib/temperature';
 
@@ -35,9 +20,7 @@
 	let raw = $state('');
 	let text = $state('');
 
-	// Every box is filled here rather than at declaration, so the boxes show
-	// what is actually stored the moment the caller attaches something — and so
-	// nothing captures a prop's first value and then quietly stops listening.
+	// Filled here rather than at declaration so the boxes track the prop instead of capturing its first value.
 	$effect(() => {
 		const u = readUnit();
 		unit = u;
@@ -45,9 +28,7 @@
 		text = note ?? '';
 	});
 
-	/** The flip CONVERTS her number rather than reinterpreting it. The first
-	 *  build left 37.0 sitting under a °F label, one tap from being stored as
-	 *  2.78 °C. */
+	/** The flip CONVERTS her number rather than reinterpreting it. */
 	function flip() {
 		const c = toC(raw, unit);
 		unit = unit === 'C' ? 'F' : 'C';
@@ -118,8 +99,7 @@
 		gap: 0.4rem;
 	}
 
-	/* Inner chrome resolves against currentColor, not the theme, so these boxes
-	   survive sitting on a card that wears an arbitrary tint. Hearth's trick. */
+	/* Inner chrome resolves against currentColor, not the theme, so these boxes survive an arbitrary card tint. */
 	input,
 	textarea {
 		flex: 1;

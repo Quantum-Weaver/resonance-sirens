@@ -25,10 +25,8 @@
 		return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 	}
 
-	// ── SAND — The Keeper's Hourglass ──────────────────────────────────────────
-	// Canvas needs resolved strings: token-valued colors come from the cosmic
-	// constants mirror; the browns are the sand's own deliberate art palette
-	// (no earth tones exist in the token system — sand is sand, declared).
+	// SAND
+	// Canvas needs resolved strings: token-valued colors come from the cosmic constants mirror.
 
 	const SAND_COLORS = [QUANTUM_COLORS['hearth.gold'], QUANTUM_COLORS['fire.base'], '#C49A6C', '#8B5A2B', '#D4A853', '#B8732A'] as const;
 
@@ -213,7 +211,7 @@
 		rafId = requestAnimationFrame(sandLoop);
 	}
 
-	// ── DISSOLVE PATTERNS — Mandala, Flower of Life, Metatron's Cube ────────────
+	// DISSOLVE PATTERNS
 
 	let dissolveInitialized = false;
 	let dissolvePixels: Uint8ClampedArray | null = null;
@@ -398,7 +396,7 @@
 		rafId = requestAnimationFrame(dissolveLoop);
 	}
 
-	// ── BREATHING — pure SVG/CSS ─────────────────────────────────────────────────
+	// BREATHING
 
 	const breathCycleSecs = $derived(() => {
 		const speed = 1 - progress * 0.5;
@@ -412,7 +410,7 @@
 		return `rgb(${r},${g},${b})`;
 	});
 
-	// ── Lifecycle ──────────────────────────────────────────────────────────────
+	// Lifecycle
 
 	function isDissolveMode(m: string) {
 		return m === 'dissolve' || m === 'flower' || m === 'metatron' || m === 'cycle';

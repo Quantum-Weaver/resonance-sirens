@@ -1,24 +1,4 @@
 <script lang="ts">
-	// ==========================================================================
-	// A DAY, OPENED - in the flow, under the week it belongs to
-	// ==========================================================================
-	//
-	// No modal, no overlay, nothing fixed, no focus trap. The row opens and the
-	// square she tapped stays visible above it, so she never loses her place and
-	// nothing has to be dismissed before the app works again. Hearth's card
-	// idiom, held: state on a rune, the body behind an {#if}, the detail boxes
-	// inline in flow, and nothing moves.
-	//
-	// THE SKY IS FACTS AND ONLY FACTS. The moon over a day is identical for
-	// every woman alive, which is precisely why it is safe to print - and
-	// precisely why nothing in this app may ever set it beside her moments as a
-	// relationship. Which moon was up when she pressed is a fact about that
-	// press, the way the clock time is. An alignment, a correlation, a "tends
-	// toward" is the thing we refuse, and there is no function here that could
-	// compute one.
-	//
-	// A day she put nothing on opens exactly the same way and says nothing at
-	// all about that. The foot below is the foot on every day alike.
 
 	import { clockOf, type Day } from '$lib/days';
 	import { record } from '$lib/moments.svelte';
@@ -40,8 +20,7 @@
 	} = $props();
 
 	let changing = $state<string | null>(null);
-	/** Two-step, in place. There is no dialog anywhere in this app - the second
-	 *  tap lands on the same thumb-width of screen the first one did. */
+	/** Two-step, in place: the second tap lands where the first one did. */
 	let arming = $state<string | null>(null);
 	let time = $state('');
 	let said = $state('');
