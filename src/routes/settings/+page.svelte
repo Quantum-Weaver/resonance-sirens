@@ -11,6 +11,7 @@
 	import type { Moment } from '$lib/record';
 
 	const APP = 'resonance-sirens';
+	const PRIVACY_URL = 'https://audhdities.com/apps/privacy';
 	const SANCTUARY_URL = 'https://audhdities.com';
 
 	// Theme
@@ -131,6 +132,16 @@
 			await openUrl(SANCTUARY_URL);
 		} catch {
 			/* browser/dev: no-op */
+		}
+	}
+
+	let privacyError = $state(false);
+	async function openPrivacy() {
+		try {
+			const { openUrl } = await import('@tauri-apps/plugin-opener');
+			await openUrl(PRIVACY_URL);
+		} catch {
+			privacyError = true; // browser/dev fallback: show the URL itself
 		}
 	}
 
@@ -278,6 +289,8 @@
 		<p class="privacy-line">
 			Nothing in this app leaves this device. There is no account, no sync, no
 			network call anywhere in it.
+			<button class="privacy-link" onclick={openPrivacy}>Privacy Policy</button>
+			{#if privacyError}<span class="privacy-url">{PRIVACY_URL}</span>{/if}
 		</p>
 
 		<div class="danger-zone">
@@ -354,6 +367,7 @@
 			<p class="about-license">All data belongs to the vessel. The Resonance Grammar governs.</p>
 			<div class="about-links">
 				<button class="privacy-link" onclick={openSanctuary}>audhdities.com — the Sanctuary</button>
+				<button class="privacy-link" onclick={openPrivacy}>Privacy Policy</button>
 			</div>
 		</div>
 	</section>
@@ -524,6 +538,12 @@
 		text-decoration: underline;
 		cursor: pointer;
 		text-align: left;
+	}
+	.privacy-url {
+		display: block;
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		word-break: break-all;
 	}
 	.about-links {
 		display: flex;
