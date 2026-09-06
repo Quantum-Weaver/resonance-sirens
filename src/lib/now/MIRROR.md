@@ -3,7 +3,7 @@
 As of 2026-08-18 (the rebuild, and TJ's calendar), the clock reader's single
 editable truth is:
 
-    C:\_superposition\resonance-awen\tools\the-now\src\index.ts
+    ../resonance-awen/tools/the-now/src/index.ts
 
 Do not edit `index.ts` in THIS folder — it is a byte-faithful mirror
 (SHA256 verified at the copy: D825B37945A2A907), refreshed by distribution runs, the
