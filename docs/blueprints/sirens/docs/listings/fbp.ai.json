@@ -1,0 +1,53 @@
+{
+  "tier": "folder",
+  "folder_name": "listings",
+  "folder_path": "docs/listings",
+  "self": "sirens/docs/listings/fbp.ai.json",
+  "parent": "sirens/docs/obp.ai.json",
+  "description": "1 files, 0 subfolders",
+  "files": [
+    {
+      "path": "docs/listings/PLAY-TRACK.md",
+      "description": "Sirens"
+    }
+  ],
+  "file_count": 1,
+  "subdirectories": [],
+  "code_analysis": {
+    "PLAY-TRACK.md": {
+      "language": "markdown",
+      "lines": 125,
+      "words": 1281,
+      "heading_count": 10,
+      "headings": [
+        "Sirens \u2014 Google Play test track",
+        "Standards check \u2014 verified against the signed artifact, 2026-08-23",
+        "The upload pack (KP's hands)",
+        "App name (30 char max \u2014 this is 16)",
+        "Short description (80 char max \u2014 this is 74)",
+        "Full description \u2014 paste-ready (KP's \u269b framing, 2026-08-23: a simple calendar app to track moments with the emoji definitions belonging to the user)",
+        "Release notes \u2014 first upload (under the 500-char limit)",
+        "Data safety form \u2014 the answers",
+        "Content rating questionnaire",
+        "Track log"
+      ],
+      "links_external": 0,
+      "links_site_absolute": [],
+      "links_internal": [],
+      "links_internal_unresolved": [],
+      "links_internal_outside_checkout": [],
+      "code_fences": 4,
+      "table_rows": 18,
+      "checkboxes": {
+        "open": 0,
+        "done": 0
+      },
+      "has_story_block": false,
+      "declares_mirror_class": false
+    }
+  },
+  "folders_not_walked": [],
+  "scan_timestamp": "2026-09-07T14:01:48.121199 | in sovereign time",
+  "maintaining_agent": "FolderAgent",
+  "note": "The details live here. Upper tiers link to this address; they do not copy this body."
+}

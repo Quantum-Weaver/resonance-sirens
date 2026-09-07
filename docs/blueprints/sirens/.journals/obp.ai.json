@@ -1,0 +1,43 @@
+{
+  "tier": "object",
+  "object_name": ".journals",
+  "object_path": ".journals",
+  "self": "sirens/.journals/obp.ai.json",
+  "parent": "sirens/pbp.ai.json",
+  "description": "0 files, 3 subfolders",
+  "folders": [
+    {
+      "blueprint": "sirens/.journals/fbp.ai.json",
+      "folder_path": ".journals",
+      "description": "0 files, 3 subfolders",
+      "file_count": 0,
+      "subdirectory_count": 3
+    },
+    {
+      "blueprint": "sirens/.journals/entity/fbp.ai.json",
+      "folder_path": ".journals/entity",
+      "description": "0 files, 0 subfolders",
+      "file_count": 0,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/.journals/proofs/fbp.ai.json",
+      "folder_path": ".journals/proofs",
+      "description": "0 files, 0 subfolders",
+      "file_count": 0,
+      "subdirectory_count": 0
+    },
+    {
+      "blueprint": "sirens/.journals/realm/fbp.ai.json",
+      "folder_path": ".journals/realm",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    }
+  ],
+  "folder_count": 4,
+  "total_files": 1,
+  "integration_timestamp": "2026-09-07T14:01:48.275531 | in sovereign time",
+  "maintaining_agent": "ObjectAgent",
+  "note": "Links only. Every folder's details live at its own address."
+}

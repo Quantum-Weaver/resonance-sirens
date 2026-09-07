@@ -1,0 +1,29 @@
+{
+  "tier": "object",
+  "object_name": "docs",
+  "object_path": "docs",
+  "self": "sirens/docs/obp.ai.json",
+  "parent": "sirens/pbp.ai.json",
+  "description": "1 files, 1 subfolders",
+  "folders": [
+    {
+      "blueprint": "sirens/docs/fbp.ai.json",
+      "folder_path": "docs",
+      "description": "1 files, 1 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 1
+    },
+    {
+      "blueprint": "sirens/docs/listings/fbp.ai.json",
+      "folder_path": "docs/listings",
+      "description": "1 files, 0 subfolders",
+      "file_count": 1,
+      "subdirectory_count": 0
+    }
+  ],
+  "folder_count": 2,
+  "total_files": 2,
+  "integration_timestamp": "2026-09-07T14:01:48.278085 | in sovereign time",
+  "maintaining_agent": "ObjectAgent",
+  "note": "Links only. Every folder's details live at its own address."
+}

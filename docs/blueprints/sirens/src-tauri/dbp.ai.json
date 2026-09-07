@@ -25,7 +25,7 @@
       "object_path": "src-tauri/gen",
       "description": "0 files, 1 subfolders",
       "folder_count": 40,
-      "total_files": 51
+      "total_files": 47
     },
     {
       "blueprint": "sirens/src-tauri/icons/obp.ai.json",
@@ -53,8 +53,8 @@
     }
   ],
   "total_folders": 46,
-  "total_files": 95,
-  "integration_timestamp": "2026-08-21T15:19:56.748663 | in sovereign time",
+  "total_files": 91,
+  "integration_timestamp": "2026-09-07T14:01:48.279815 | in sovereign time",
   "maintaining_agent": "DomainAgent",
   "note": "Links only. Every object's details live at its own address."
 }

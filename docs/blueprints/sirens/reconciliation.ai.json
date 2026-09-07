@@ -4,20 +4,9 @@
   "self": "sirens/reconciliation.ai.json",
   "parent": "sirens/pbp.ai.json",
   "law": "Findings are REPORTED, never repaired. A voiced file is corrected by a hand.",
-  "total_findings": 1,
-  "by_kind": {
-    "markdown-link-unresolved": 1
-  },
-  "findings": [
-    {
-      "kind": "markdown-link-unresolved",
-      "what": "internal markdown links that do not resolve",
-      "declared": "6 internal links",
-      "present": "1 unresolved",
-      "address": "(see list)",
-      "note": "docs/CHECKLIST.md -> docs/STORY-BLOCK.md"
-    }
-  ],
+  "total_findings": 0,
+  "by_kind": {},
+  "findings": [],
   "note": "Zero findings is a real result, not an empty section.",
-  "scan_timestamp": "2026-08-21T15:19:56.773780 | in sovereign time"
+  "scan_timestamp": "2026-09-07T14:01:48.318409 | in sovereign time"
 }

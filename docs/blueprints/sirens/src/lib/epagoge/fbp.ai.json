@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "src/lib/epagoge/index.ts",
-      "description": "the-epagoge"
+      "description": "typescript, 6,242 bytes"
     },
     {
       "path": "src/lib/epagoge/MIRROR.md",
@@ -20,7 +20,7 @@
   "code_analysis": {
     "index.ts": {
       "language": "typescript",
-      "lines": 193,
+      "lines": 170,
       "exported_functions": [
         "beginWalk",
         "isDone",
@@ -76,7 +76,7 @@
     }
   },
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.589930 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.158629 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }

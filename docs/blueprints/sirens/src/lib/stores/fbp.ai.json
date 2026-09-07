@@ -8,11 +8,11 @@
   "files": [
     {
       "path": "src/lib/stores/theme.svelte.ts",
-      "description": "typescript, 3,360 bytes"
+      "description": "typescript, 2,664 bytes"
     },
     {
       "path": "src/lib/stores/timer.svelte.ts",
-      "description": "typescript, 7,403 bytes"
+      "description": "typescript, 6,282 bytes"
     },
     {
       "path": "src/lib/stores/ui.svelte.ts",
@@ -24,7 +24,7 @@
   "code_analysis": {
     "theme.svelte.ts": {
       "language": "typescript",
-      "lines": 95,
+      "lines": 90,
       "exported_functions": [],
       "exported_consts": [
         "SIRENS_ROSE",
@@ -40,7 +40,7 @@
     },
     "timer.svelte.ts": {
       "language": "typescript",
-      "lines": 239,
+      "lines": 223,
       "exported_functions": [],
       "exported_consts": [
         "prefersReducedMotion",
@@ -58,7 +58,7 @@
     },
     "ui.svelte.ts": {
       "language": "typescript",
-      "lines": 12,
+      "lines": 16,
       "exported_functions": [],
       "exported_consts": [
         "uiStore"
@@ -72,7 +72,7 @@
     }
   },
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.598364 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.164113 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }

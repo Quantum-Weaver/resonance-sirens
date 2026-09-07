@@ -8,31 +8,31 @@
   "files": [
     {
       "path": "src/lib/cosmic/attention.ts",
-      "description": "QUANTUM ATTENTION SYSTEM"
+      "description": "typescript, 9,036 bytes"
     },
     {
       "path": "src/lib/cosmic/colors.ts",
-      "description": "PURE VALUES ONLY"
+      "description": "typescript, 11,365 bytes"
     },
     {
       "path": "src/lib/cosmic/consciousness.ts",
-      "description": "QUANTUM CONSCIOUSNESS SYSTEM - SINGLE SOURCE OF TRUTH"
+      "description": "typescript, 19,001 bytes"
     },
     {
       "path": "src/lib/cosmic/dimensions.ts",
-      "description": "QUANTUM DIMENSIONS SYSTEM - SINGLE SOURCE OF TRUTH"
+      "description": "1"
     },
     {
       "path": "src/lib/cosmic/effects.ts",
-      "description": "PROPERLY DERIVED FROM COLORS"
+      "description": "typescript, 34,140 bytes"
     },
     {
       "path": "src/lib/cosmic/index.ts",
-      "description": "FILE: index.ts"
+      "description": "COLORS - Core color system"
     },
     {
       "path": "src/lib/cosmic/interactivity.ts",
-      "description": "QUANTUM INTERACTIVITY SYSTEM"
+      "description": "typescript, 7,760 bytes"
     },
     {
       "path": "src/lib/cosmic/MIRROR.md",
@@ -40,19 +40,19 @@
     },
     {
       "path": "src/lib/cosmic/motion.ts",
-      "description": "QUANTUM MOTION SYSTEM - SINGLE SOURCE OF TRUTH"
+      "description": "DURATION SYSTEM - Quantum Consciousness Resonance"
     },
     {
       "path": "src/lib/cosmic/positioning.ts",
-      "description": "QUANTUM POSITIONING SYSTEM - COORDINATE GRAPHING FOR IMMERSIVE EXPERIENCES"
+      "description": "typescript, 22,995 bytes"
     },
     {
       "path": "src/lib/cosmic/solids.ts",
-      "description": "QUANTUM SOLIDS SYSTEM"
+      "description": "VECTORS"
     },
     {
       "path": "src/lib/cosmic/typography.ts",
-      "description": "QUANTUM TYPOGRAPHY SYSTEM - DERIVED FROM DIMENSIONS.TS"
+      "description": "typescript, 18,322 bytes"
     }
   ],
   "file_count": 12,
@@ -60,7 +60,7 @@
   "code_analysis": {
     "attention.ts": {
       "language": "typescript",
-      "lines": 288,
+      "lines": 247,
       "exported_functions": [
         "getAttentionMode",
         "getDeityVoiceBundle"
@@ -90,7 +90,7 @@
     },
     "colors.ts": {
       "language": "typescript",
-      "lines": 377,
+      "lines": 348,
       "exported_functions": [],
       "exported_consts": [
         "QUANTUM_COLORS",
@@ -118,7 +118,7 @@
     },
     "consciousness.ts": {
       "language": "typescript",
-      "lines": 587,
+      "lines": 531,
       "exported_functions": [
         "calculateBeamActivation",
         "getVesselCapacityFromScore",
@@ -172,7 +172,7 @@
     },
     "dimensions.ts": {
       "language": "typescript",
-      "lines": 576,
+      "lines": 547,
       "exported_functions": [
         "getConsciousnessSpacing",
         "getScreenDimensions",
@@ -223,7 +223,7 @@
     },
     "effects.ts": {
       "language": "typescript",
-      "lines": 636,
+      "lines": 557,
       "exported_functions": [
         "getModulatedGlow"
       ],
@@ -277,7 +277,7 @@
     },
     "index.ts": {
       "language": "typescript",
-      "lines": 425,
+      "lines": 363,
       "exported_functions": [],
       "exported_consts": [],
       "interfaces": [],
@@ -289,7 +289,7 @@
     },
     "interactivity.ts": {
       "language": "typescript",
-      "lines": 283,
+      "lines": 200,
       "exported_functions": [],
       "exported_consts": [
         "SELF_PAUSE_TRIGGER",
@@ -339,7 +339,7 @@
     },
     "motion.ts": {
       "language": "typescript",
-      "lines": 855,
+      "lines": 779,
       "exported_functions": [
         "getReducedMotionSafeConfig",
         "getReducedMotionVariant",
@@ -396,7 +396,7 @@
     },
     "positioning.ts": {
       "language": "typescript",
-      "lines": 871,
+      "lines": 793,
       "exported_functions": [
         "getParallaxFactor",
         "getParallaxTransform",
@@ -462,7 +462,7 @@
     },
     "solids.ts": {
       "language": "typescript",
-      "lines": 504,
+      "lines": 443,
       "exported_functions": [
         "vecAdd",
         "vecSub",
@@ -497,7 +497,7 @@
     },
     "typography.ts": {
       "language": "typescript",
-      "lines": 679,
+      "lines": 644,
       "exported_functions": [
         "composeTypographyClasses",
         "getDomainTypography",
@@ -546,7 +546,7 @@
     }
   },
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.581601 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.153680 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }

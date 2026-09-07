@@ -8,27 +8,27 @@
   "files": [
     {
       "path": "src/lib/circles.ts",
-      "description": "THE CIRCLES"
+      "description": "The circles"
     },
     {
       "path": "src/lib/days.ts",
-      "description": "THE DAYS"
+      "description": "All day arithmetic goes through the local calendar, never milliseconds"
     },
     {
       "path": "src/lib/moments.svelte.ts",
-      "description": "THE LIVING RECORD"
+      "description": "MUST be `.svelte.ts`"
     },
     {
       "path": "src/lib/prefs.svelte.ts",
-      "description": "PREFERENCES"
+      "description": "Preferences live in localStorage, not the database: display choices, never records"
     },
     {
       "path": "src/lib/record.ts",
-      "description": "THE RECORD"
+      "description": "typescript, 6,667 bytes"
     },
     {
       "path": "src/lib/temperature.ts",
-      "description": "TEMPERATURE"
+      "description": "Celsius is what the record holds, always; Fahrenheit is a keyboard, not a unit"
     }
   ],
   "file_count": 6,
@@ -48,7 +48,7 @@
   "code_analysis": {
     "circles.ts": {
       "language": "typescript",
-      "lines": 96,
+      "lines": 56,
       "exported_functions": [
         "isCircle",
         "tintOf"
@@ -67,7 +67,7 @@
     },
     "days.ts": {
       "language": "typescript",
-      "lines": 164,
+      "lines": 124,
       "exported_functions": [
         "dayKey",
         "todayKey",
@@ -93,7 +93,7 @@
     },
     "moments.svelte.ts": {
       "language": "typescript",
-      "lines": 145,
+      "lines": 123,
       "exported_functions": [],
       "exported_consts": [
         "record"
@@ -107,7 +107,7 @@
     },
     "prefs.svelte.ts": {
       "language": "typescript",
-      "lines": 51,
+      "lines": 39,
       "exported_functions": [],
       "exported_consts": [
         "prefs"
@@ -121,7 +121,7 @@
     },
     "record.ts": {
       "language": "typescript",
-      "lines": 294,
+      "lines": 231,
       "exported_functions": [
         "inTauri",
         "capture",
@@ -147,7 +147,7 @@
     },
     "temperature.ts": {
       "language": "typescript",
-      "lines": 58,
+      "lines": 41,
       "exported_functions": [
         "toC",
         "fromC",
@@ -167,7 +167,7 @@
     }
   },
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.551170 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.133589 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }

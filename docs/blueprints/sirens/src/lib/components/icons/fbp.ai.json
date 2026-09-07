@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "src/lib/components/icons/IconCalendar.svelte",
-      "description": "surface, 728 bytes"
+      "description": "surface, 371 bytes"
     },
     {
       "path": "src/lib/components/icons/IconHome.svelte",
@@ -16,7 +16,7 @@
     },
     {
       "path": "src/lib/components/icons/IconInsights.svelte",
-      "description": "surface, 539 bytes"
+      "description": "surface, 449 bytes"
     },
     {
       "path": "src/lib/components/icons/Icons.svelte",
@@ -40,7 +40,7 @@
   "code_analysis": {
     "IconCalendar.svelte": {
       "language": "svelte",
-      "lines": 13,
+      "lines": 8,
       "uses_runes": [
         "$props"
       ],
@@ -58,7 +58,7 @@
     },
     "IconInsights.svelte": {
       "language": "svelte",
-      "lines": 10,
+      "lines": 9,
       "uses_runes": [
         "$props"
       ],
@@ -104,7 +104,7 @@
     }
   },
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.563920 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.142176 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }

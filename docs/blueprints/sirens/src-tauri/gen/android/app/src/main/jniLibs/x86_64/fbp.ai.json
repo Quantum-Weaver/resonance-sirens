@@ -4,18 +4,13 @@
   "folder_path": "src-tauri/gen/android/app/src/main/jniLibs/x86_64",
   "self": "sirens/src-tauri/gen/android/app/src/main/jniLibs/x86_64/fbp.ai.json",
   "parent": "sirens/src-tauri/gen/obp.ai.json",
-  "description": "1 files, 0 subfolders",
-  "files": [
-    {
-      "path": "src-tauri/gen/android/app/src/main/jniLibs/x86_64/libresonance_sirens_lib.so",
-      "description": "file, 9,101,640 bytes"
-    }
-  ],
-  "file_count": 1,
+  "description": "0 files, 0 subfolders",
+  "files": [],
+  "file_count": 0,
   "subdirectories": [],
   "code_analysis": {},
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.667304 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.213277 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }

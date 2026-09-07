@@ -1,0 +1,45 @@
+{
+  "tier": "folder",
+  "folder_name": "realm",
+  "folder_path": ".journals/realm",
+  "self": "sirens/.journals/realm/fbp.ai.json",
+  "parent": "sirens/.journals/obp.ai.json",
+  "description": "1 files, 0 subfolders",
+  "files": [
+    {
+      "path": ".journals/realm/2026-09-01-the-privacy-url-is-the-single-page.md",
+      "description": "2026-09-01"
+    }
+  ],
+  "file_count": 1,
+  "subdirectories": [],
+  "code_analysis": {
+    "2026-09-01-the-privacy-url-is-the-single-page.md": {
+      "language": "markdown",
+      "lines": 16,
+      "words": 364,
+      "heading_count": 2,
+      "headings": [
+        "2026-09-01 \u2014 the privacy policy URL is the single page",
+        "2026-09-01 (later) \u2014 a privacy link, in the echoes shape"
+      ],
+      "links_external": 0,
+      "links_site_absolute": [],
+      "links_internal": [],
+      "links_internal_unresolved": [],
+      "links_internal_outside_checkout": [],
+      "code_fences": 0,
+      "table_rows": 0,
+      "checkboxes": {
+        "open": 0,
+        "done": 0
+      },
+      "has_story_block": false,
+      "declares_mirror_class": false
+    }
+  },
+  "folders_not_walked": [],
+  "scan_timestamp": "2026-09-07T14:01:48.117324 | in sovereign time",
+  "maintaining_agent": "FolderAgent",
+  "note": "The details live here. Upper tiers link to this address; they do not copy this body."
+}

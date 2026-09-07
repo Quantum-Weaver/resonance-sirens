@@ -1,0 +1,135 @@
+{
+  "tier": "folder",
+  "folder_name": "screenshots",
+  "folder_path": "screenshots",
+  "self": "sirens/screenshots/fbp.ai.json",
+  "parent": "sirens/pbp.ai.json",
+  "description": "9 files, 0 subfolders",
+  "files": [
+    {
+      "path": "screenshots/sirens-01.jpg",
+      "description": "image, 203,940 bytes"
+    },
+    {
+      "path": "screenshots/sirens-02.jpg",
+      "description": "image, 218,115 bytes"
+    },
+    {
+      "path": "screenshots/sirens-03.jpg",
+      "description": "image, 261,749 bytes"
+    },
+    {
+      "path": "screenshots/sirens-04.jpg",
+      "description": "image, 153,656 bytes"
+    },
+    {
+      "path": "screenshots/sirens-05.jpg",
+      "description": "image, 256,624 bytes"
+    },
+    {
+      "path": "screenshots/sirens-06.jpg",
+      "description": "image, 383,137 bytes"
+    },
+    {
+      "path": "screenshots/sirens-07.jpg",
+      "description": "image, 401,375 bytes"
+    },
+    {
+      "path": "screenshots/sirens-08.jpg",
+      "description": "image, 91,501 bytes"
+    },
+    {
+      "path": "screenshots/sirens-09.jpg",
+      "description": "image, 294,390 bytes"
+    }
+  ],
+  "file_count": 9,
+  "subdirectories": [],
+  "code_analysis": {
+    "sirens-01.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-01.jpg",
+      "location": "screenshots",
+      "bytes": 203940,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-02.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-02.jpg",
+      "location": "screenshots",
+      "bytes": 218115,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-03.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-03.jpg",
+      "location": "screenshots",
+      "bytes": 261749,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-04.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-04.jpg",
+      "location": "screenshots",
+      "bytes": 153656,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-05.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-05.jpg",
+      "location": "screenshots",
+      "bytes": 256624,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-06.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-06.jpg",
+      "location": "screenshots",
+      "bytes": 383137,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-07.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-07.jpg",
+      "location": "screenshots",
+      "bytes": 401375,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-08.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-08.jpg",
+      "location": "screenshots",
+      "bytes": 91501,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    },
+    "sirens-09.jpg": {
+      "language": "content-file",
+      "format": "jpg",
+      "name": "sirens-09.jpg",
+      "location": "screenshots",
+      "bytes": 294390,
+      "opened": false,
+      "law": "Name and location only. The file is never opened."
+    }
+  },
+  "folders_not_walked": [],
+  "scan_timestamp": "2026-09-07T14:01:48.123467 | in sovereign time",
+  "maintaining_agent": "FolderAgent",
+  "note": "The details live here. Upper tiers link to this address; they do not copy this body."
+}

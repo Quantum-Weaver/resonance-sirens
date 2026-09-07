@@ -8,23 +8,23 @@
   "files": [
     {
       "path": "src/lib/components/CircleWord.svelte",
-      "description": "surface, 2,434 bytes"
+      "description": "surface, 1,834 bytes"
     },
     {
       "path": "src/lib/components/ComfortBar.svelte",
-      "description": "surface, 5,271 bytes"
+      "description": "surface, 5,691 bytes"
     },
     {
       "path": "src/lib/components/DayCell.svelte",
-      "description": "surface, 4,250 bytes"
+      "description": "surface, 2,684 bytes"
     },
     {
       "path": "src/lib/components/DayPanel.svelte",
-      "description": "surface, 7,777 bytes"
+      "description": "surface, 6,512 bytes"
     },
     {
       "path": "src/lib/components/DetailBoxes.svelte",
-      "description": "surface, 4,372 bytes"
+      "description": "surface, 3,298 bytes"
     },
     {
       "path": "src/lib/components/GradientPulse.svelte",
@@ -32,19 +32,19 @@
     },
     {
       "path": "src/lib/components/MomentCard.svelte",
-      "description": "surface, 5,806 bytes"
+      "description": "surface, 4,809 bytes"
     },
     {
       "path": "src/lib/components/QuickAdd.svelte",
-      "description": "surface, 6,056 bytes"
+      "description": "surface, 5,415 bytes"
     },
     {
       "path": "src/lib/components/Sidebar.svelte",
-      "description": "surface, 10,537 bytes"
+      "description": "surface, 8,289 bytes"
     },
     {
       "path": "src/lib/components/TimerVisualization.svelte",
-      "description": "surface, 18,223 bytes"
+      "description": "surface, 17,475 bytes"
     }
   ],
   "file_count": 10,
@@ -54,7 +54,7 @@
   "code_analysis": {
     "CircleWord.svelte": {
       "language": "svelte",
-      "lines": 96,
+      "lines": 86,
       "uses_runes": [
         "$derived",
         "$effect",
@@ -66,7 +66,7 @@
     },
     "ComfortBar.svelte": {
       "language": "svelte",
-      "lines": 212,
+      "lines": 237,
       "uses_runes": [
         "$derived",
         "$effect",
@@ -77,7 +77,7 @@
     },
     "DayCell.svelte": {
       "language": "svelte",
-      "lines": 155,
+      "lines": 131,
       "uses_runes": [
         "$derived",
         "$props"
@@ -87,7 +87,7 @@
     },
     "DayPanel.svelte": {
       "language": "svelte",
-      "lines": 338,
+      "lines": 317,
       "uses_runes": [
         "$props",
         "$state"
@@ -97,7 +97,7 @@
     },
     "DetailBoxes.svelte": {
       "language": "svelte",
-      "lines": 165,
+      "lines": 145,
       "uses_runes": [
         "$effect",
         "$props",
@@ -117,7 +117,7 @@
     },
     "MomentCard.svelte": {
       "language": "svelte",
-      "lines": 230,
+      "lines": 212,
       "uses_runes": [
         "$derived",
         "$props",
@@ -128,7 +128,7 @@
     },
     "QuickAdd.svelte": {
       "language": "svelte",
-      "lines": 271,
+      "lines": 258,
       "uses_runes": [
         "$effect",
         "$props",
@@ -139,7 +139,7 @@
     },
     "Sidebar.svelte": {
       "language": "svelte",
-      "lines": 374,
+      "lines": 311,
       "uses_runes": [
         "$derived",
         "$effect",
@@ -150,7 +150,7 @@
     },
     "TimerVisualization.svelte": {
       "language": "svelte",
-      "lines": 599,
+      "lines": 597,
       "uses_runes": [
         "$derived",
         "$effect",
@@ -162,7 +162,7 @@
     }
   },
   "folders_not_walked": [],
-  "scan_timestamp": "2026-08-21T15:19:56.559009 | in sovereign time",
+  "scan_timestamp": "2026-09-07T14:01:48.139014 | in sovereign time",
   "maintaining_agent": "FolderAgent",
   "note": "The details live here. Upper tiers link to this address; they do not copy this body."
 }
