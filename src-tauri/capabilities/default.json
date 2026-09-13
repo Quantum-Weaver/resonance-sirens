@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Default capabilities for Resonance Sirens. SQL is listed operation by operation on purpose - sql:default alone grants nothing.",
+  "description": "Default capabilities for Resonance Sirens. SQL is listed operation by operation on purpose - sql:default alone grants nothing. The opener is scoped to the two Sanctuary URLs the settings page opens and nothing else.",
   "windows": ["main"],
   "permissions": [
     "core:default",
@@ -9,6 +9,13 @@
     "sql:allow-load",
     "sql:allow-execute",
     "sql:allow-select",
-    "sql:allow-close"
+    "sql:allow-close",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        { "url": "https://audhdities.com" },
+        { "url": "https://audhdities.com/*" }
+      ]
+    }
   ]
 }
